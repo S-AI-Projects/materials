@@ -1,0 +1,29 @@
+R32-T051 LowerString regression evidence
+Python: 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]
+Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+Command: /Users/sarakottawar/materials/.venv/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/inherit-python-string -p test_lower_string.py -v
+
+Source preconditions:
+lower_string.py line 1: LowerString inherits from str
+lower_string.py line 4: constructor accepts string
+lower_string.py line 5: lowercase transformation
+
+Fixture results:
+Input='' Expected='' Actual=''
+Input='PyThOn' Expected='python' Actual='python'
+Input='AaAa' Expected='aaaa' Actual='aaaa'
+
+Test output:
+
+test_input_is_not_mutated (test_lower_string.TestLowerString.test_input_is_not_mutated) ... ok
+test_ordinary_input (test_lower_string.TestLowerString.test_ordinary_input) ... ok
+test_repeated_values (test_lower_string.TestLowerString.test_repeated_values) ... ok
+test_returned_type (test_lower_string.TestLowerString.test_returned_type) ... ok
+test_smallest_valid_input (test_lower_string.TestLowerString.test_smallest_valid_input) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
+
+Exit code: 0

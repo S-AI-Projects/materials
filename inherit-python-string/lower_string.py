@@ -1,18 +1,5 @@
 class LowerString(str):
-    # This initializer doesn't work
-    def __init__(self, string):
-        super().__init__(string.lower())
+    """Create a string subclass containing lowercase text."""
 
-
-# class LowerString(str):
-#     def __new__(cls, string):
-#         instance = super().__new__(cls, string.lower())
-#         return instance
-
-
-# from collections import UserString
-
-
-# class LowerString(UserString):
-#     def __init__(self, string):
-#         super().__init__(string.lower())
+    def __new__(cls, string):
+        return super().__new__(cls, string.lower())
