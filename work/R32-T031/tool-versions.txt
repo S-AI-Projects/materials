@@ -1,0 +1,66 @@
+Python 3.9.6
+Name: Flask
+Version: 1.1.4
+Summary: A simple framework for building complex web applications.
+Home-page: https://palletsprojects.com/p/flask/
+Author: Armin Ronacher
+Author-email: armin.ronacher@active-4.com
+License: BSD-3-Clause
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: Jinja2, click, itsdangerous, Werkzeug
+Required-by:
+---
+Name: grpcio
+Version: 1.80.1
+Summary: HTTP/2-based RPC framework
+Home-page:
+Author:
+Author-email: The gRPC Authors <grpc-io@googlegroups.com>
+License:
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: typing-extensions
+Required-by: grpcio-tools
+---
+Name: grpcio-tools
+Version: 1.80.1
+Summary: Protobuf code generator for gRPC
+Home-page:
+Author:
+Author-email: The gRPC Authors <grpc-io@googlegroups.com>
+License:
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: grpcio, protobuf, setuptools
+Required-by:
+---
+Name: protobuf
+Version: 3.20.3
+Summary: Protocol Buffers
+Home-page: https://developers.google.com/protocol-buffers/
+Author:
+Author-email:
+License: BSD-3-Clause
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires:
+Required-by: grpcio-tools
+---
+Name: Jinja2
+Version: 2.11.3
+Summary: A very fast and expressive template engine.
+Home-page: https://palletsprojects.com/p/jinja/
+Author: Armin Ronacher
+Author-email: armin.ronacher@active-4.com
+License: BSD-3-Clause
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: MarkupSafe
+Required-by: Flask
+---
+Name: MarkupSafe
+Version: 2.0.1
+Summary: Safely add untrusted strings to HTML/XML markup.
+Home-page: https://palletsprojects.com/p/markupsafe/
+Author: Armin Ronacher
+Author-email: armin.ronacher@active-4.com
+License: BSD-3-Clause
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires:
+Required-by: Jinja2
