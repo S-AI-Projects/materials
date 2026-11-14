@@ -23,6 +23,13 @@ recommendations_client = RecommendationsStub(recommendations_channel)
 
 @app.route("/")
 def render_homepage():
+    """Render the homepage using up to three mystery-book recommendations.
+
+    Input: no route parameters; requests recommendations for user 1.
+    Output: rendered HTML containing one list item per returned book.
+    Side effects: makes one external gRPC request; does not mutate local data.
+    Dependency: recommendations_client.Recommend.
+    """
     recommendations_request = RecommendationRequest(
         user_id=1, category=BookCategory.MYSTERY, max_results=3
     )
