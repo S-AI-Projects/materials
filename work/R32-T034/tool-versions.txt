@@ -1,0 +1,3 @@
+Python: 3.9.6
+Ruff: 0.14.1
+Pytest: 8.4.2
