@@ -11,7 +11,20 @@ console = Console()
 
 
 def make_table(coin_list):
-    """Generate a rich table from a list of coins"""
+    """Generate a rich table from a list of coins.
+
+    Example:
+        >>> coins = [{
+        ...     "symbol": "BTC",
+        ...     "name": "Bitcoin",
+        ...     "price_usd": "50000.00",
+        ...     "volume24": 1000.5,
+        ...     "percent_change_7d": "0.0",
+        ... }]
+        >>> table = make_table(coins)
+        >>> # Generates a Table with columns (Symbol, Name, Price (USD), Volume (24h), Percent Change (7d))
+        >>> # and row: ["BTC", "Bitcoin", "50000.00", "1000.50", "0.0%"]
+    """
     table = Table(
         title=f"Crypto Data - {time.asctime()}",
         style="black on grey66",
