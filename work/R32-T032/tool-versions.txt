@@ -1,0 +1,35 @@
+Python 3.9.6
+Python 3.9.6
+Name: requests
+Version: 2.32.3
+Summary: Python HTTP for Humans.
+Home-page: https://requests.readthedocs.io
+Author: Kenneth Reitz
+Author-email: me@kennethreitz.org
+License: Apache-2.0
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: urllib3, charset-normalizer, idna, certifi
+Required-by:
+---
+Name: beautifulsoup4
+Version: 4.12.3
+Summary: Screen-scraping library
+Home-page:
+Author:
+Author-email: Leonard Richardson <leonardr@segfault.org>
+License: MIT License
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires: soupsieve
+Required-by:
+---
+Name: urllib3
+Version: 2.2.3
+Summary: HTTP library with thread-safe connection pooling, file post, and more.
+Home-page:
+Author:
+Author-email: Andrey Petrov <andrey.petrov@shazow.net>
+License:
+Location: /Users/shreyasahi/materials/.venv/lib/python3.9/site-packages
+Requires:
+Required-by: requests
+git version 2.50.1 (Apple Git-155)
