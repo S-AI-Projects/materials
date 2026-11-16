@@ -1,0 +1,76 @@
+================================================================================
+TASK EVIDENCE REPORT: R32-T058
+================================================================================
+Task ID: R32-T058 (Task 8 of 10)
+Repository: S-AI-Projects/materials
+Target Module: python315-utf8-default/main.py
+Assigned Branch: student/e26b07f0709/R32-T058
+Pull Request Base: master
+Pull Request Head: student/e26b07f0709/R32-T058
+GitHub Issue: https://github.com/S-AI-Projects/materials/issues/58
+
+--------------------------------------------------------------------------------
+1. TOOL & RUNTIME ENVIRONMENT
+--------------------------------------------------------------------------------
+Python: 3.15.2 (3.15.2)
+Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+Ruff: ruff 0.14.1
+
+--------------------------------------------------------------------------------
+2. SOURCE PRECONDITIONS & ANCHORS
+--------------------------------------------------------------------------------
+- Primary Source Anchor (main.py: Line 1):
+  `import textlib` establishes external dependency on textlib reading routine.
+- Primary Source Anchor (main.py: Line 3):
+  `textlib.read_text("notes.txt")` establishes default notes path fixture.
+- Helper Precondition Anchor (textlib.py: Line 5):
+  `encoding = io.text_encoding(encoding)` establishes default UTF-8 under Python 3.15 (PEP 686).
+- Helper Precondition Anchor (textlib.py: Line 6):
+  `with open(path, encoding=encoding) as f:` requires path to exist on filesystem.
+- Helper Precondition Anchor (textlib.py: Line 7):
+  `return f.read()` returns decoded text string, yielding "" on 0-byte files.
+
+--------------------------------------------------------------------------------
+3. FAILURE, ABSENT-RESULT, AND RECOVERY BEHAVIORS
+--------------------------------------------------------------------------------
+- Missing File / FileNotFoundError:
+  Smallest valid input `""` (empty string of length 0) or absent paths raise FileNotFoundError.
+- Encoding Mismatch / UnicodeDecodeError:
+  Smallest valid input (1-byte non-UTF8 0xFF) raises UnicodeDecodeError under default UTF-8.
+- Absent-Result / Empty-Result (""):
+  0-byte valid file yields empty string sentinel without error, honoring total read contract.
+- Caller State Preservation:
+  Caller collections (lists, dicts, tokens) remain strictly unmutated after failure.
+- Successful Recovery:
+  Immediate subsequent call with valid path (`notes.txt`) succeeds cleanly without resource leak.
+
+--------------------------------------------------------------------------------
+4. INDEPENDENT ORACLE EVALUATION (20 TEST CASES)
+--------------------------------------------------------------------------------
+Total Cases: 20
+Agreement Rate: 100% (20 / 20)
+- Smallest Valid Input (empty path ""): FileNotFoundError raised (OK)
+- Ordinary Input (notes.txt): 68 bytes decoded text returned (OK)
+- Smallest Valid Input (0-byte file): "" absent-result returned (OK)
+- Smallest Valid Input (1-byte non-UTF8): UnicodeDecodeError raised (OK)
+- Caller State Preservation (list/dict): Unaltered (OK)
+- Subsequent Recovery Calls: 100% Success (OK)
+
+--------------------------------------------------------------------------------
+5. DELIBERATE REGRESSION / DEFECT BREAK VERIFICATIONS
+--------------------------------------------------------------------------------
+Break 1 PASSED: Swallowed FileNotFoundError defect detected by assertion.
+Break 2 PASSED: Caller state mutation defect detected by assertion.
+Break 3 PASSED: Suppressed UnicodeDecodeError defect detected by assertion.
+Break 4 PASSED: Corrupted recovery return value detected by assertion.
+All 4 deliberate defect breaks were successfully detected by the assertions.
+
+--------------------------------------------------------------------------------
+6. TEST EXECUTION SUMMARY
+--------------------------------------------------------------------------------
+- work/R32-T058/check.py: 20 oracle cases + 4 break checks: OK
+- python315-utf8-default/test_main.py: 20 native unit tests: OK
+- python315-utf8-default/main.py: 3 doctests: OK
+- python-unittest discovery: 64 global tests: OK
+- Ruff lint & format checks: All passed.
+================================================================================
