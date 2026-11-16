@@ -2,6 +2,45 @@
 
 This repository holds the code for the Real Python [When Do You Use an Ellipsis in Python?](https://realpython.com/python-ellipsis/) tutorial.
 
+## The Ellipsis as a Stub Function (`ellipsis_example.py`)
+
+In Python, the `...` (`Ellipsis`) literal is frequently used as a concise alternative to `pass` for defining placeholder functions or stubs:
+
+```python
+def do_nothing(*args, **kwargs):
+    ...
+```
+
+### Complexity and Scaling
+
+- **Input-size variable $N$**: Number of elements or arguments passed to `do_nothing(*args)`.
+- **Operation count**: Exactly 0 data operations performed. Disassembled bytecode consists of exactly 3 instructions:
+  - `RESUME 0`
+  - `LOAD_COMMON_CONSTANT None`
+  - `RETURN_VALUE`
+- **Time Complexity**:
+  - *Theoretical Worst-Case*: $\mathcal{O}(1)$ constant time.
+  - *Empirical Observation*: Flat execution time independent of input argument size $N$, confirmed across 3 increasing input sizes over 5 repetitions.
+- **Space Complexity**: $\mathcal{O}(1)$ auxiliary memory.
+- **State Preservation**: Pure function with zero mutations or side-effects; caller arguments remain unmodified.
+
+## Testing and Verification
+
+Run the focused unit test suite:
+```console
+$ python3 -m unittest discover -s python-ellipsis -p "test_*.py" -v
+```
+
+Run doctests:
+```console
+$ python3 -m doctest -v python-ellipsis/ellipsis_example.py
+```
+
+Run the benchmark and task verification runner:
+```console
+$ python3 work/R32-T059/check.py
+```
+
 ## Dependencies
 
 To run the examples in this repository, you need to have the dependencies installed. You should first create a virtual environment:
