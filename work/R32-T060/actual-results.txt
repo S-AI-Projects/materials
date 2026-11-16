@@ -1,0 +1,52 @@
+# R32-T060: Actual Evaluation Results
+
+--- Correctness Evaluation Results (20 cases) ---
+[TC-01] Type: NoneType, Actual: None
+[TC-02] Type: NoneType, Actual: None
+[TC-03] Type: NoneType, Actual: None
+[TC-04] Type: NoneType, Actual: None
+[TC-05] Type: NoneType, Actual: None
+[TC-06] Type: NoneType, Actual: None
+[TC-07] Type: NoneType, Actual: None
+[TC-08] Type: NoneType, Actual: None
+[TC-09] Type: NoneType, Actual: None
+[TC-10] Type: NoneType, Actual: None
+[TC-11] Type: NoneType, Actual: None
+[TC-12] Type: NoneType, Actual: None
+[TC-13] Type: NoneType, Actual: None
+[TC-14] Type: NoneType, Actual: None
+[TC-15] Type: NoneType, Actual: None
+[TC-16] Type: NoneType, Actual: None
+[TC-17] Type: NoneType, Actual: None
+[TC-18] Type: state_preservation, Actual: ['help', 'exit']
+[TC-19] Type: NoneType, Actual: None
+[TC-20] Type: bool, Actual: True
+
+--- Deliberate Mutation Test Results ---
+[Primary Mutation (Return condition in Line 18)]
+  Mutation: case "exit" | "quit": -> case "exit":
+  Distinguishing Input: ['quit']
+  Named Assertion: assert_repl_terminates_on_quit
+  Original Implementation: PASS
+  Mutated Implementation:  FAIL
+  Semantic Reason: Semantic: REPL loop failed to break on 'quit', causing second read hitting EOF and raising SystemExit
+  Actual Error Caught: Expected clean termination on 'quit', but REPL raised SystemExit(None)
+
+[Secondary Mutation 1 (Accumulation condition in Line 22)]
+  Mutation: if _ is not None: -> if _:
+  Distinguishing Input: ['0', 'exit']
+  Named Assertion: assert_repl_evaluates_falsy_expression
+  Original Implementation: PASS
+  Mutated Implementation:  FAIL
+  Semantic Reason: Semantic: Evaluated expression '0' was suppressed because bool(0) is False
+  Actual Error Caught: Falsy evaluation output mismatch: ['Type "help" for more information, "exit" or "quit" to finish.'] != ['Type "help" for more information, "exit" or "quit" to finish.', '0']
+
+[Secondary Mutation 2 (Boundary comparison in Line 14)]
+  Mutation: case command if command.lower() in COMMANDS: -> case command if command in COMMANDS:
+  Distinguishing Input: ['EXIT']
+  Named Assertion: assert_repl_case_insensitive_exit
+  Original Implementation: PASS
+  Mutated Implementation:  FAIL
+  Semantic Reason: Semantic: Uppercase command 'EXIT' failed boundary check and was incorrectly treated as expression
+  Actual Error Caught: Expected clean termination on uppercase 'EXIT', but got: SystemExit(None)
+

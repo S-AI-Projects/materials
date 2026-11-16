@@ -1,0 +1,30 @@
+# R32-T060: Test Inputs & Fixture Anchors
+# Source Fixture Anchor: COMMANDS = ("help", "exit", "quit")
+# PROMPT Anchor: PROMPT = "\N{SNAKE} "
+
+--- Correctness Test Cases (20 cases) ---
+[TC-01] Input: ['exit'] (Smallest valid input sequence ['exit'] (clean loop exit)) [Precondition: repl.py: Line 6 COMMANDS, Line 10 banner, Line 18-19 case "exit": break]
+[TC-02] Input: ['quit'] (Smallest valid input sequence ['quit'] (alternative loop exit)) [Precondition: repl.py: Line 6 COMMANDS, Line 10 banner, Line 18-19 case "quit": break]
+[TC-03] Input: ['help', 'exit'] (Ordinary valid input sequence ['help', 'exit']) [Precondition: repl.py: Line 6 COMMANDS, Line 16-17 case 'help', Line 18-19 exit]
+[TC-04] Input: ['1 + 1', 'exit'] (Ordinary valid input sequence ['1 + 1', 'exit']) [Precondition: repl.py: Line 20-23 eval expression printing numeric result]
+[TC-05] Input: ['0', 'exit'] (Falsy integer expression ['0', 'exit'] (preserves 0 output)) [Precondition: repl.py: Line 22 if _ is not None: ensures 0 is printed]
+[TC-06] Input: ["''", 'exit'] (Falsy empty string expression ["''", 'exit']) [Precondition: repl.py: Line 22 if _ is not None: ensures empty string is printed]
+[TC-07] Input: ['False', 'exit'] (Falsy boolean expression ['False', 'exit']) [Precondition: repl.py: Line 22 if _ is not None: ensures False is printed]
+[TC-08] Input: ['[]', 'exit'] (Falsy empty list expression ['[]', 'exit']) [Precondition: repl.py: Line 22 if _ is not None: ensures [] is printed]
+[TC-09] Input: ['None', 'exit'] (Expression evaluating to None ['None', 'exit'] (suppressed)) [Precondition: repl.py: Line 22 if _ is not None: suppresses None output]
+[TC-10] Input: ['7 * 6', 'exit'] (Arithmetic multiplication expression ['7 * 6', 'exit']) [Precondition: repl.py: Line 20-23 eval arithmetic evaluation]
+[TC-11] Input: ['"abc" + "xyz"', 'exit'] (String concatenation expression ['"abc" + "xyz"', 'exit']) [Precondition: repl.py: Line 20-23 eval string concatenation]
+[TC-12] Input: ['z = 99', 'exit'] (Statement execution ['z = 99', 'exit'] (silent execution)) [Precondition: repl.py: Line 24-25 exec statement produces no stdout output]
+[TC-13] Input: ['def :', 'exit'] (Fallback on invalid syntax ['def :', 'exit']) [Precondition: repl.py: Line 26-27 case _: fallback guidance message]
+[TC-14] Input: ['EXIT'] (Case-insensitive uppercase exit ['EXIT']) [Precondition: repl.py: Line 14 command.lower() in COMMANDS ('EXIT' -> 'exit')]
+[TC-15] Input: ['Exit'] (Case-insensitive mixedcase exit ['Exit']) [Precondition: repl.py: Line 14 command.lower() in COMMANDS ('Exit' -> 'exit')]
+[TC-16] Input: ['QUIT'] (Case-insensitive uppercase quit ['QUIT']) [Precondition: repl.py: Line 14 command.lower() in COMMANDS ('QUIT' -> 'quit')]
+[TC-17] Input: ['Quit'] (Case-insensitive mixedcase quit ['Quit']) [Precondition: repl.py: Line 14 command.lower() in COMMANDS ('Quit' -> 'quit')]
+[TC-18] Input: ['help', 'exit'] (Caller input sequence list immutability / state preservation) [Precondition: Purity contract: repl.main never mutates caller input sequence lists]
+[TC-19] Input: ['1 + 1', '2 * 3', 'exit'] (Output ordering and reproducibility across fresh runs) [Precondition: Deterministic FIFO order: outputs strictly match input stream sequence]
+[TC-20] Input: None (Syntax validator helper valid() contract) [Precondition: repl.py: Line 37-42 ast.parse validation in eval and exec modes]
+
+--- Deliberate Mutation Test Inputs ---
+[Primary Mutation] Input: ['quit'] (Smallest distinguishing input exposing Line 18 loop-exit omission)
+[Secondary Mutation 1] Input: ['0', 'exit'] (Distinguishing input exposing Line 22 falsy evaluation suppression)
+[Secondary Mutation 2] Input: ['EXIT'] (Distinguishing input exposing Line 14 case-sensitivity defect)

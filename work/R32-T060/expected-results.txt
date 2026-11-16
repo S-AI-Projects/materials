@@ -1,0 +1,32 @@
+# R32-T060: Expected Results & Contracts
+# Documented output type: NoneType (None implicitly returned on loop break)
+# Output shape: Sequential formatted stdout lines
+# Output ordering: Strict FIFO sequence matching stream of commands/expressions
+# Input-mutation contract: Caller input sequences remain unmodified
+
+--- Correctness Expected Values ---
+[TC-01] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-02] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-03] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', 'Python 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]']
+[TC-04] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '2']
+[TC-05] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '0']
+[TC-06] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '']
+[TC-07] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', 'False']
+[TC-08] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '[]']
+[TC-09] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-10] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '42']
+[TC-11] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', 'abcxyz']
+[TC-12] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-13] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', 'Please type a command or valid Python']
+[TC-14] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-15] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-16] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-17] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.']
+[TC-18] Type: state_preservation, Expected: ['help', 'exit'], Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', 'Python 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]']
+[TC-19] Type: NoneType, Expected: None, Expected Lines: ['Type "help" for more information, "exit" or "quit" to finish.', '2', '6']
+[TC-20] Type: bool, Expected: True, Expected Lines: []
+
+--- Deliberate Mutation Expected Results ---
+Primary Mutation (Line 18): Original PASS, Mutant FAIL with AssertionError on assert_repl_terminates_on_quit
+Secondary Mutation 1 (Line 22): Original PASS, Mutant FAIL with AssertionError on assert_repl_evaluates_falsy_expression
+Secondary Mutation 2 (Line 14): Original PASS, Mutant FAIL with AssertionError on assert_repl_case_insensitive_exit
