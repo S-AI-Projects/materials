@@ -1,0 +1,20 @@
+[TC-01] Type: exception, Expected: 'FileNotFoundError'
+[TC-02] Type: value, Expected: 'Remember to pass an explicit encoding to every text-mode open() call.\n'
+[TC-03] Type: value, Expected: ''
+[TC-04] Type: exception, Expected: 'UnicodeDecodeError'
+[TC-05] Type: state_preservation, Expected: ['caller_token_alpha', 42, {'active': True}]
+[TC-06] Type: state_preservation, Expected: {'session_id': 9999, 'records': [10, 20]}
+[TC-07] Type: recovery, Expected: 'Remember to pass an explicit encoding to every text-mode open() call.\n'
+[TC-08] Type: recovery, Expected: 'Remember to pass an explicit encoding to every text-mode open() call.\n'
+[TC-09] Type: exception, Expected: 'FileNotFoundError'
+[TC-10] Type: exception, Expected: 'TypeError'
+[TC-11] Type: exception, Expected: 'UnicodeDecodeError'
+[TC-12] Type: value, Expected: 'Café £20'
+[TC-13] Type: value, Expected: 'A'
+[TC-14] Type: value, Expected: 'First Line\nSecond Line: ☕ café naïve\n'
+[TC-15] Type: value, Expected: 'Remember to pass an explicit encoding to every text-mode open() call.\n'
+[TC-16] Type: value, Expected: True
+[TC-17] Type: exception, Expected: 'IsADirectoryError'
+[TC-18] Type: value, Expected: 'Remember to pass an explicit encoding to every text-mode open() call.\n'
+[TC-19] Type: value, Expected: '{"café": "☕", "naïve": true}\n'
+[TC-20] Type: value, Expected: 'id,name,quantity\n1,espresso,12\n2,americano,8\n3,macchiato,5\n'
