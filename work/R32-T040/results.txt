@@ -1,0 +1,85 @@
+R32-T040: truncate regression and mutation check
+==============================================
+
+Environment:
+Python 3.9.6
+pytest 8.4.2
+
+Protected source condition:
+python-rounding/rounding.py:4 defines truncate(n, decimals=0)
+python-rounding/rounding.py:5 scales by 10**decimals
+python-rounding/rounding.py:6 uses int() before division
+
+Regression inputs and independent expected outputs:
+- truncate(-0.9, 0) == 0.0
+- truncate(-12.349, 2) == -12.34
+- truncate(12.349, 2) == 12.34
+- truncate(0, 0) == 0.0
+All cases also assert that the result type is exactly float.
+
+ORIGINAL IMPLEMENTATION
+Command: /Library/Developer/CommandLineTools/usr/bin/python3 -m pytest -q python-rounding/test_rounding.py
+Exit code: 0
+....                                                                     [100%]
+4 passed in 0.02s
+
+
+TEMPORARY MUTANT: int() replaced with math.floor()
+Mutant exists only in a temporary directory.
+Exit code: 1
+FF..                                                                     [100%]
+=================================== FAILURES ===================================
+______ test_truncate_returns_float_and_truncates_toward_zero[-0.9-0-0.0] _______
+
+number = -0.9, decimals = 0, expected = 0.0
+
+    @pytest.mark.parametrize(
+        ("number", "decimals", "expected"),
+        [
+            (-0.9, 0, 0.0),
+            (-12.349, 2, -12.34),
+            (12.349, 2, 12.34),
+            (0, 0, 0.0),
+        ],
+    )
+    def test_truncate_returns_float_and_truncates_toward_zero(
+        number, decimals, expected
+    ):
+        actual = truncate(number, decimals)
+    
+>       assert actual == expected
+E       assert -1.0 == 0.0
+
+test_rounding.py:26: AssertionError
+___ test_truncate_returns_float_and_truncates_toward_zero[-12.349-2--12.34] ____
+
+number = -12.349, decimals = 2, expected = -12.34
+
+    @pytest.mark.parametrize(
+        ("number", "decimals", "expected"),
+        [
+            (-0.9, 0, 0.0),
+            (-12.349, 2, -12.34),
+            (12.349, 2, 12.34),
+            (0, 0, 0.0),
+        ],
+    )
+    def test_truncate_returns_float_and_truncates_toward_zero(
+        number, decimals, expected
+    ):
+        actual = truncate(number, decimals)
+    
+>       assert actual == expected
+E       assert -12.35 == -12.34
+
+test_rounding.py:26: AssertionError
+=========================== short test summary info ============================
+FAILED test_rounding.py::test_truncate_returns_float_and_truncates_toward_zero[-0.9-0-0.0]
+FAILED test_rounding.py::test_truncate_returns_float_and_truncates_toward_zero[-12.349-2--12.34]
+2 failed, 2 passed in 0.01s
+
+
+RESULT: PASS
+Original implementation passed.
+Temporary floor mutant failed the same named regression test.
+The real rounding.py was not modified.
