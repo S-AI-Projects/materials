@@ -1,29 +1,35 @@
+from __future__ import annotations
+
+import os
+import subprocess
 import sys
-from ai_agent_project import double
+from importlib.metadata import PackageNotFoundError, version
+from pathlib import Path
 
-def record(msg: str) -> None:
-    print(msg)
 
-def main() -> None:
-    record(f"Python version: {sys.version.splitlines()[0]}")
-    tests = [
-        ("zero", 0, 0),
-        ("seven", 7, 14),
-    ]
-    for name, inp, expected in tests:
-        result = double(inp)
-        record(f"Test {name}: double({inp}) => {result} (expected {expected})")
-        assert result == expected, f"{name} failed: {result} != {expected}"
-    # Repeatability test
-    first = double(3)
-    _ = double(5)
-    second = double(3)
-    record(f"Repeatability: first={first}, second={second}")
-    assert first == second == 6, "Repeatability test failed"
-    record("All checks passed.")
+def main() -> int:
+    repo_root = Path(__file__).resolve().parents[2]
+    project_dir = repo_root / "python-project-for-agentic-coding"
+    env = os.environ.copy()
+    env["PYTHONPATH"] = str(project_dir / "src") + os.pathsep + env.get("PYTHONPATH", "")
+
+    print(f"Python: {sys.version.splitlines()[0]}")
+    try:
+        print(f"pytest: {version('pytest')}")
+    except PackageNotFoundError:
+        print("pytest: not installed")
+
+    if sys.version_info < (3, 14):
+        print("ERROR: This project requires Python >=3.14.")
+        return 1
+
+    return subprocess.run(
+        [sys.executable, "-m", "pytest", "tests/test_double_repeatable.py", "-q"],
+        cwd=project_dir,
+        env=env,
+        check=False,
+    ).returncode
+
 
 if __name__ == "__main__":
-    try:
-        main()
-    except AssertionError as e:
-        sys.exit(str(e))
+    raise SystemExit(main())
