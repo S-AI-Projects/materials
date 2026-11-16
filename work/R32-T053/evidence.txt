@@ -1,0 +1,79 @@
+R32-T053 Independent Reference Comparison Evidence
+==================================================
+Task ID: R32-T053
+Target file: ipython-console/employee.py
+Target function: ipython_console
+Student URN: e26b07f0709
+Branch: student/e26b07f0709/R32-T053
+
+Tool and Runtime Versions:
+  Python: 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Ruff: ruff 0.14.1
+
+Preconditions established by source:
+  Line 1: first_name = 'Han'
+  Line 2: last_name = 'Solo'
+  Line 3: department = 'Accounts'
+  Line 4: salary = 1000
+
+Contract Specification:
+  - Function: ipython_console(first_name=MOD_FIRST_NAME, last_name=MOD_LAST_NAME, department=MOD_DEPT, salary=MOD_SALARY)
+  - Smallest valid input: ('', '', '', 0)
+  - Ordinary input: ('Han', 'Solo', 'Accounts', 1000)
+  - Output type: dict
+  - Output shape: 5 keys ('first_name', 'last_name', 'department', 'salary', 'full_name')
+  - Ordering: Deterministic key insertion order
+  - Mutation behavior: Non-mutating; inputs preserved unchanged
+  - External I/O: Mocked (stdout patched with io.StringIO)
+
+Independent Oracle Results (24 inputs tested):
+[TC-01] PASS: Smallest valid input (empty strings, zero salary) -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-02] PASS: Ordinary input (Han Solo from employee.py lines 1-4) -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-03] PASS: Default invocation with empty arguments -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-04] PASS: Single character names -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-05] PASS: Alphanumeric identifiers in name fields -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-06] PASS: Hyphenated last name -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-07] PASS: Multi-word first name containing spaces -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-08] PASS: First name only (empty last name) -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-09] PASS: Last name only (empty first name) -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-10] PASS: Zero salary boundary with named employee -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-11] PASS: Negative salary boundary (accounting deduction) -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-12] PASS: Floating point salary with fractional cents -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-13] PASS: Large integer salary -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-14] PASS: Unicode accented string attributes -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-15] PASS: Non-ASCII CJK string attributes -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-16] PASS: Special punctuation characters in department -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-17] PASS: Multi-word spaced department name -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-18] PASS: All lowercase string values -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-19] PASS: All uppercase string values -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-20] PASS: Long department description string -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-21] PASS: Sub-dollar fractional salary -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-22] PASS: High-precision float salary -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-23] PASS: Dictionary input mapping -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+[TC-24] PASS: Tuple input sequence -> Return=dict, Shape=5, Mutation=None, Matches Oracle=True
+
+Native Unit Test Execution:
+Command: /Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/ipython-console -p test_employee.py -v
+Exit Code: 0
+Output:
+
+test_all_test_cases_against_independent_oracle (test_employee.TestEmployee.test_all_test_cases_against_independent_oracle)
+Cross-check all 24 inputs against the independent oracle. ... ok
+test_input_immutability (test_employee.TestEmployee.test_input_immutability)
+Verify input containers and parameters are not mutated. ... ok
+test_ordinary_input (test_employee.TestEmployee.test_ordinary_input)
+Verify ordinary input from employee.py lines 1-4. ... ok
+test_output_type_and_shape (test_employee.TestEmployee.test_output_type_and_shape)
+Verify return type is dict with exact 5 documented keys. ... ok
+test_preconditions_preserved (test_employee.TestEmployee.test_preconditions_preserved)
+Verify module-level variables are preserved intact (lines 1-4). ... ok
+test_smallest_valid_input (test_employee.TestEmployee.test_smallest_valid_input)
+Verify smallest valid input produces expected result. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+
+Status: ALL 24 INDEPENDENT REFERENCE CHECKS AND UNIT TESTS PASSED
