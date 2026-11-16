@@ -1,0 +1,91 @@
+R32-T054 Invariant and Property Test Evidence
+============================================
+Task ID: R32-T054
+Target file: python-print/ansi.py
+Target function: esc
+Student URN: e26b07f0709
+Branch: student/e26b07f0709/R32-T054
+
+Tool and Runtime Versions:
+  Python: 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Ruff: ruff 0.14.1
+
+Preconditions established by source:
+  Line 1: def esc(*codes): - Variable positional argument acceptance
+  Line 2: return f"\033[{';'.join(str(code) for code in codes)}m" - CSI prefix '\033[', ';' delimiter, 'm' terminator
+  Line 5: print(esc(31, 1, 4) + 'really' + esc(0) + ' important') - Ordinary multi-code input (31, 1, 4) -> '\033[31;1;4m' and reset (0,) -> '\033[0m'
+
+Invariant Contract Specification:
+  - Function signature: esc(*codes)
+  - Smallest valid input: () (0 arguments) -> '\033[m'
+  - Ordinary inputs: (31, 1, 4) -> '\033[31;1;4m' and (0,) -> '\033[0m'
+  - Output type: str
+  - Framing: prefix '\033[', suffix 'm'
+  - Semicolon delimiter count: strictly max(0, len(codes) - 1) semicolons
+  - Exact character length: 3 + sum(len(str(c))) + max(0, len(codes) - 1)
+  - Reversibility roundtrip: tuple(payload.split(';')) == tuple(str(c) for c in codes)
+  - Ordering behavior: strictly monotonic parameter order preserved
+  - Determinism & Idempotence: repeated equivalent calls yield identical outputs
+  - Immutability: caller argument containers are never mutated
+  - External I/O: mocked (stdout intercepted during import and evaluation)
+
+Property-Based Testing Configuration:
+  - Generator seed: 42 (deterministic fixed random seed)
+  - Generated test cases: 120 bounded cases (lengths 0 to 8)
+  - Curated fixture cases: 13 boundary cases
+  - Total evaluated cases: 133
+
+Deliberate Invariant-Break Verification (Mandatory Acceptance Criterion):
+[BREAK-01] PASS: Missing ESC CSI prefix (framing defect)
+  Smallest failing input: ()
+  Caught AssertionError as expected: Result '[m' does not start with \033[
+  Clean repository state preserved: Verified
+
+[BREAK-02] PASS: Comma delimiter instead of semicolon (delimiter defect)
+  Smallest failing input: (1, 2)
+  Caught AssertionError as expected: Expected 1 semicolons, got 0
+  Clean repository state preserved: Verified
+
+[BREAK-03] PASS: Reversed argument order (ordering preservation defect)
+  Smallest failing input: (1, 2)
+  Caught AssertionError as expected: Roundtrip token mismatch: expected ('1', '2'), got ('2', '1')
+  Clean repository state preserved: Verified
+
+[BREAK-04] PASS: Missing 'm' SGR terminator (suffix framing defect)
+  Smallest failing input: ()
+  Caught AssertionError as expected: Result '\x1b[' does not end with 'm'
+  Clean repository state preserved: Verified
+
+Native Unit Test Suite Execution:
+  Command: /Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/python-print -p test_ansi.py -v
+  Exit code: 0
+  Output:
+test_curated_domain_boundaries (test_ansi.TestEscInvariant.test_curated_domain_boundaries)
+Verify curated standard ANSI styling and color boundaries. ... ok
+test_homomorphic_substring_composition (test_ansi.TestEscInvariant.test_homomorphic_substring_composition)
+Verify payload concatenation holds for non-empty code sequences. ... ok
+test_idempotence_and_determinism (test_ansi.TestEscInvariant.test_idempotence_and_determinism)
+Verify repeated invocations under controlled state yield identical outputs. ... ok
+test_input_non_mutation (test_ansi.TestEscInvariant.test_input_non_mutation)
+Verify caller input collections and arguments are not mutated. ... ok
+test_ordering_behavior (test_ansi.TestEscInvariant.test_ordering_behavior)
+Verify sequential order of arguments is strictly preserved. ... ok
+test_output_type_and_framing (test_ansi.TestEscInvariant.test_output_type_and_framing)
+Verify return type is str and starts with '\033[' and ends with 'm'. ... ok
+test_preconditions_and_literal_fixtures (test_ansi.TestEscInvariant.test_preconditions_and_literal_fixtures)
+Test smallest valid input and ordinary inputs with literal expectations. ... ok
+test_property_generated_bounded_cases (test_ansi.TestEscInvariant.test_property_generated_bounded_cases)
+Verify invariants across 120 deterministic generated bounded cases. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.001s
+
+OK
+
+Summary:
+  Fixtures checked: 13 (all passed)
+  Property cases checked: 120 (all passed)
+  Deliberate breaks verified: 4 (all caught)
+  Unit test exit code: 0
+  Status: ALL INVARIANT CHECKS, PROPERTY TESTS AND UNIT TESTS PASSED
