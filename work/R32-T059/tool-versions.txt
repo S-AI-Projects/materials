@@ -1,0 +1,8 @@
+Python: 3.15.2 (3.15.2)
+Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+Ruff: ruff 0.14.1
+Commands:
+  python3 work/R32-T059/check.py
+  python3 -m unittest discover -s python-ellipsis -p 'test_*.py' -v
+  python3 -m doctest -v python-ellipsis/ellipsis_example.py
+  python3 -m unittest discover -s python-unittest -v

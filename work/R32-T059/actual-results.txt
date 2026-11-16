@@ -1,0 +1,37 @@
+# R32-T059: Actual Correctness & Benchmark Results
+
+--- Correctness Evaluation Results (20 cases) ---
+[TC-01] Type: value, Actual: None
+[TC-02] Type: value, Actual: None
+[TC-03] Type: value, Actual: None
+[TC-04] Type: value, Actual: None
+[TC-05] Type: value, Actual: None
+[TC-06] Type: value, Actual: None
+[TC-07] Type: state_preservation, Actual: [1, 2, 3, {'nested': 4}]
+[TC-08] Type: state_preservation, Actual: {'alpha': 10, 'beta': [1, 2]}
+[TC-09] Type: state_preservation, Actual: {10, 20, 30}
+[TC-10] Type: value, Actual: None
+[TC-11] Type: value, Actual: None
+[TC-12] Type: value, Actual: None
+[TC-13] Type: value, Actual: None
+[TC-14] Type: value, Actual: None
+[TC-15] Type: value, Actual: True
+[TC-16] Type: value, Actual: 3
+[TC-17] Type: value, Actual: None
+[TC-18] Type: value, Actual: None
+[TC-19] Type: value, Actual: None
+[TC-20] Type: value, Actual: 0
+
+--- Scaling Benchmark Measurements ---
+Units: Wall-clock in milliseconds (ms), Per-call in nanoseconds (ns), Operations in count
+
+| Input Size | Elements (N) | Calls (M) | Median (ms) | Range (ms) | Per-Call Median (ns) | Algorithmic Ops | Bytecodes |
+|---|---|---|---|---|---|---|---|
+| Small | 10 | 50000 | 1.127 ms | 0.018 ms | 22.5 ns | 0 | 3 |
+| Medium | 100 | 50000 | 1.149 ms | 0.064 ms | 23.0 ns | 0 | 3 |
+| Large | 1000 | 50000 | 1.133 ms | 0.028 ms | 22.7 ns | 0 | 3 |
+
+--- Raw Repetition Timings (ms) ---
+Small (5 reps): [1.123, 1.141, 1.127, 1.127, 1.139] ms
+Medium (5 reps): [1.134, 1.149, 1.155, 1.198, 1.134] ms
+Large (5 reps): [1.122, 1.125, 1.150, 1.133, 1.150] ms
