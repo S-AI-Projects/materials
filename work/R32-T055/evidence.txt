@@ -1,0 +1,120 @@
+R32-T055 Verification Repeatability and Input-Isolation Evidence
+================================================================
+Task ID: R32-T055
+Target file: python-sql-libraries/mysql_app.py
+Target function: create_server_connection
+Student URN: e26b07f0709
+Branch: student/e26b07f0709/R32-T055
+
+Tool and Runtime Versions:
+  Python: 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Ruff: ruff 0.14.1
+
+Preconditions established by source:
+  Line 5: HOST_NAME = 'localhost' - Standard host name constant
+  Line 6: USER_NAME = 'root' - Standard database user constant
+  Line 7: USER_PASSWORD = '' - Empty string password precondition
+  Line 8: DB_NAME = 'sm_app' - Database application name constant
+  Line 11: def create_server_connection(host_name, user_name, user_password, connector=None): - Public interface with optional dependency seam
+  Line 14-18: connection = connect(host=host_name, user=user_name, passwd=user_password) - Driver keyword mapping
+  Line 19: print('Connection to MySQL DB successful') - Expected stdout on success
+  Line 20-21: except Error as e: print(f"The error '{e}' occurred") - Expected stdout on caught Error
+  Line 23: return connection - Connection object returned on success, None on error
+  Line 74: connection = create_server_connection(HOST_NAME, USER_NAME, USER_PASSWORD) - Standard 3-argument call site
+  Line 195: val = [(4, 5), (3, 4)] - Source fixture data anchor verifying file identity
+
+Function Contract Specification:
+  - Signature: create_server_connection(host_name, user_name, user_password, connector=None)
+  - Smallest valid input: ('', '', '') -> Minimal bounded string tuple
+  - Ordinary valid input: ('localhost', 'root', '') from lines 5-7, 74
+  - Return type: Connection object on success, None on Error
+  - Output structure: prints 'Connection to MySQL DB successful' or error message
+  - Input-mutation behavior: Non-mutating; inputs preserved unchanged
+  - Observable dependencies: mysql.connector driver, standard output (print), Error exception
+  - External state controlled: MockMySQLConnector with MockMySQLConnection and stdout capture
+  - Backward compatibility: Default connector=None preserves standard 3-argument callers
+
+Repeatability and Input-Isolation Verification Results:
+  1. Fresh Isolated State Repeatability:
+     PASS: Fixture ('localhost', 'root', '') executed twice in fresh isolated states.
+      Both executions produced identical connection attributes, identical stdout,
+      and identical connector call records.
+  2. Sequence Independence:
+     PASS: Fixture executed after prior call with ('other.database.net', 'other_user', 'other_secret').
+      Earlier call cannot alter later result. Later call received strictly isolated parameters.
+  3. Input Isolation and Non-Mutation:
+     PASS: Input variables were not mutated. Subsequent caller modifications
+      did not affect the connection instance.
+
+Independent Oracle Test Cases (20 evaluated):
+  [TC-01] PASS: Smallest valid input (empty strings) -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-02] PASS: Ordinary valid input (lines 5-7) -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-03] PASS: Standard loopback IP host -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-04] PASS: Custom development host -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-05] PASS: Remote domain hostname -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-06] PASS: Private network IPv4 host -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-07] PASS: IPv6 loopback host -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-08] PASS: Single-character credentials -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-09] PASS: Long compute hostname -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-10] PASS: Unicode accented credentials -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-11] PASS: Punctuation in credentials -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-12] PASS: Whitespace strings in credentials -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-13] PASS: Fresh state repeatability run 1 -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-14] PASS: Fresh state repeatability run 2 -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-15] PASS: Sequence independence - earlier call -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-16] PASS: Sequence independence - fixture call after earlier -> Match Oracle=True, Success=True, Stdout Matches=True
+  [TC-17] PASS: Error condition - authentication failure -> Match Oracle=True, Success=False, Stdout Matches=True
+  [TC-18] PASS: Error condition - unreachable host -> Match Oracle=True, Success=False, Stdout Matches=True
+  [TC-19] PASS: Error followed by success sequence - fail call -> Match Oracle=True, Success=False, Stdout Matches=True
+  [TC-20] PASS: Error followed by success sequence - success call -> Match Oracle=True, Success=True, Stdout Matches=True
+
+Deliberate Defect-Break Verification:
+  [BREAK-01] PASS: State leakage caught as expected: State leakage detected: expected 'localhost', got 'leaked.host'
+  [BREAK-02] PASS: Input mutation caught as expected: Input mutation detected: host became 'localhost_mutated'
+  [BREAK-03] PASS: Parameter omission caught as expected: Parameter omission detected: host became 'hardcoded'
+  [BREAK-04] PASS: Error handling defect caught as expected: RuntimeError: Unhandled failure
+
+Native Unit Test Suite Execution:
+  Command: /Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/python-sql-libraries -p test_mysql_app.py -v
+  Exit code: 0
+  Output:
+test_connection_error_handling (test_mysql_app.TestErrorHandlingRepeatability.test_connection_error_handling)
+Verify caught Error prints message and returns None. ... ok
+test_error_followed_by_success_isolation (test_mysql_app.TestErrorHandlingRepeatability.test_error_followed_by_success_isolation)
+Verify a failed connection does not corrupt subsequent successful connections. ... ok
+test_default_connector_backward_compatibility (test_mysql_app.TestExternalDependencyControl.test_default_connector_backward_compatibility)
+Verify callers passing 3 positional arguments use default connector. ... ok
+test_dependency_injection_with_callable (test_mysql_app.TestExternalDependencyControl.test_dependency_injection_with_callable)
+Verify dependency injection using a callable factory function. ... ok
+test_caller_mutation_isolation (test_mysql_app.TestInputIsolationAndNonMutation.test_caller_mutation_isolation)
+Verify subsequent modifications to caller variables do not alter connection. ... ok
+test_cross_connection_isolation (test_mysql_app.TestInputIsolationAndNonMutation.test_cross_connection_isolation)
+Verify distinct connections remain isolated without cross-talk. ... ok
+test_inputs_not_mutated (test_mysql_app.TestInputIsolationAndNonMutation.test_inputs_not_mutated)
+Verify string input parameters are not modified. ... ok
+test_precondition_constants_and_data_anchor (test_mysql_app.TestPreconditionsAndAnchors.test_precondition_constants_and_data_anchor)
+Verify module constants and line 195 anchor val = [(4, 5), (3, 4)]. ... ok
+test_repeatable_in_fresh_isolated_state (test_mysql_app.TestRepeatabilityFreshState.test_repeatable_in_fresh_isolated_state)
+Verify running fixture twice in fresh isolated state produces equivalent results. ... ok
+test_alternating_inputs (test_mysql_app.TestRepeatedCallBehavior.test_alternating_inputs)
+Verify alternating smallest and ordinary inputs remain strictly isolated. ... ok
+test_repeated_identical_calls (test_mysql_app.TestRepeatedCallBehavior.test_repeated_identical_calls)
+Verify N consecutive calls produce identical deterministic outputs. ... ok
+test_fixture_after_another_valid_input (test_mysql_app.TestSequenceIndependence.test_fixture_after_another_valid_input)
+Verify earlier execution with different input cannot alter subsequent fixture call. ... ok
+test_ordinary_valid_input (test_mysql_app.TestSmallestAndOrdinaryInputs.test_ordinary_valid_input)
+Verify ordinary valid input from lines 5-7: ('localhost', 'root', ''). ... ok
+test_smallest_valid_input (test_mysql_app.TestSmallestAndOrdinaryInputs.test_smallest_valid_input)
+Verify smallest valid input: empty strings ('', '', ''). ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.000s
+
+OK
+
+Summary:
+  Oracle test cases checked: 20 (all passed)
+  Deliberate breaks verified: 4 (all caught)
+  Unit test exit code: 0
+  Status: ALL REPEATABILITY CHECKS, ISOLATION TESTS AND UNIT TESTS PASSED
