@@ -1,0 +1,4 @@
+Python: Python 3.13.5
+pytest: pytest 9.0.2
+Pygame: mocked in focused tests; project requirement is pygame==2.0.0
+Ruff: not available in this validation environment; repo pin is ruff==0.14.1
