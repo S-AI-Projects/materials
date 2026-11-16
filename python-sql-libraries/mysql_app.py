@@ -1,5 +1,20 @@
-import mysql.connector
-from mysql.connector import Error
+try:
+    import mysql.connector
+    from mysql.connector import Error
+except ImportError:
+    import types
+
+    mysql = types.ModuleType("mysql")
+    _connector_mod = types.ModuleType("mysql.connector")
+    mysql.connector = _connector_mod
+
+    class Error(Exception):
+        """Fallback Error when mysql-connector-python is unavailable."""
+
+        pass
+
+    _connector_mod.Error = Error
+    _connector_mod.connect = None
 
 # Change these connection parameters to match your MySQL server:
 HOST_NAME = "localhost"
@@ -8,16 +23,54 @@ USER_PASSWORD = ""
 DB_NAME = "sm_app"
 
 
-def create_server_connection(host_name, user_name, user_password):
+def create_server_connection(
+    host_name, user_name, user_password, connector=None
+):
+    """Create a database connection to a MySQL server.
+
+    Args:
+        host_name (str): Server host name or IP address.
+        user_name (str): Database username.
+        user_password (str): Database user password.
+        connector (optional): Database connector module or object providing
+            the `connect` method. Defaults to `mysql.connector`.
+
+    Returns:
+        Connection object if connection succeeded, otherwise None.
+    """
     connection = None
+    driver = (
+        connector
+        if connector is not None
+        else getattr(mysql, "connector", None)
+    )
+    if driver is None:
+        print("The error 'mysql.connector is not available' occurred")
+        return None
+
+    connect_func = getattr(
+        driver, "connect", driver if callable(driver) else None
+    )
+    if connect_func is None:
+        print("The error 'No connect method available on connector' occurred")
+        return None
+
+    driver_error = getattr(driver, "Error", Error)
+    error_types = (
+        (Error, driver_error)
+        if isinstance(driver_error, type)
+        and issubclass(driver_error, BaseException)
+        else (Error,)
+    )
+
     try:
-        connection = mysql.connector.connect(
+        connection = connect_func(
             host=host_name,
             user=user_name,
             passwd=user_password,
         )
         print("Connection to MySQL DB successful")
-    except Error as e:
+    except error_types as e:
         print(f"The error '{e}' occurred")
 
     return connection
