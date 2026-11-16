@@ -1,0 +1,103 @@
+================================================================================
+AUTONOMOUS TASK EXECUTION EVIDENCE — R32-T057
+================================================================================
+Task ID: R32-T057 (Task 7 of 10)
+GitHub Issue: https://github.com/S-AI-Projects/materials/issues/57
+Title: Publish a runnable example for flatten_extend (flatten.py)
+Repository: materials
+Target Module: python-flatten-list/flatten.py
+Function: flatten_extend
+Student Branch: student/e26b07f0709/R32-T057
+PR Target: S-AI-Projects/materials:master
+
+--------------------------------------------------------------------------------
+1. TOOL & RUNTIME VERSIONS
+--------------------------------------------------------------------------------
+Python: 3.15.2 (3.15.2)
+Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+Ruff: ruff 0.14.1
+
+--------------------------------------------------------------------------------
+2. SOURCE PRECONDITIONS & FIXTURE ANCHORS
+--------------------------------------------------------------------------------
+- Primary Source Anchor (Line 7): `flat_list = []`
+  Initializes an empty mutable list accumulator inside `flatten_extend(matrix)`.
+- Sibling Source Anchor (Line 14): `flat_list = []`
+  Initializes an empty mutable list accumulator inside `flatten_concatenation(matrix)`.
+
+--------------------------------------------------------------------------------
+3. DECISIVE STATE TRANSITIONS
+--------------------------------------------------------------------------------
+In `flatten_extend(matrix)`, the decisive state transition occurs when:
+    flat_list.extend(row)
+Unlike list concatenation (+ or +=) which allocates new intermediate list
+objects and copies items repeatedly, `list.extend()` unpacks the elements of
+`row` and appends them in-place directly into the existing accumulator buffer
+(`id(flat_list)` remains identical across all loop iterations).
+Accumulator length grows monotonically from k to k + len(row).
+The caller's input matrix and its rows are not mutated.
+
+--------------------------------------------------------------------------------
+4. WORKED EXAMPLE EXECUTION (OUTPUT VERIFICATION)
+--------------------------------------------------------------------------------
+============================================================
+Worked Example: flatten_extend (python-flatten-list/flatten.py)
+============================================================
+
+1. Smallest Valid Input:
+   Input matrix: []
+   Precondition (line 7): flat_list = []
+   Initial state: flat_list = []
+   Loop iterations: 0 (matrix is empty)
+   Final result: []
+
+2. Smallest Valid Input (Single Empty Row):
+   Input matrix: [[]]
+   Precondition (line 7): flat_list = []
+   Initial state: flat_list = []
+   Iteration 1: row = [] -> flat_list.extend([]) -> flat_list = []
+   Final result: []
+
+3. Ordinary Input (3x3 Matrix):
+   Input matrix: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+   Precondition (line 7): flat_list = []
+   Initial state: flat_list = [] (len=0)
+   Iteration 1: row = [1, 2, 3]
+     Decisive transition: flat_list.extend([1, 2, 3]) appends elements in-place to accumulator buffer
+     Intermediate state: flat_list = [1, 2, 3] (len=3)
+   Iteration 2: row = [4, 5, 6]
+     Decisive transition: flat_list.extend([4, 5, 6]) appends elements in-place to accumulator buffer
+     Intermediate state: flat_list = [1, 2, 3, 4, 5, 6] (len=6)
+   Iteration 3: row = [7, 8, 9]
+     Decisive transition: flat_list.extend([7, 8, 9]) appends elements in-place to accumulator buffer
+     Intermediate state: flat_list = [1, 2, 3, 4, 5, 6, 7, 8, 9] (len=9)
+   Final result: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+============================================================
+
+--------------------------------------------------------------------------------
+5. INDEPENDENT ORACLE EVALUATION (20 TEST CASES)
+--------------------------------------------------------------------------------
+Total Cases: 20
+Agreement Rate: 100% (20 / 20)
+Smallest Valid Input (empty): [] -> [] (Match OK)
+Smallest Valid Input (single empty row): [[]] -> [] (Match OK)
+Ordinary Input (3x3 matrix): [[1, 2, 3], [4, 5, 6], [7, 8, 9]] -> [1, 2, 3, 4, 5, 6, 7, 8, 9] (Match OK)
+Ordinary Input (2x2 matrix): [[1, 2], [3, 4]] -> [1, 2, 3, 4] (Match OK)
+
+--------------------------------------------------------------------------------
+6. DELIBERATE REGRESSION / DEFECT BREAK VERIFICATIONS
+--------------------------------------------------------------------------------
+[Break-1] Inverted row ordering: detected=True
+[Break-2] In-place mutation of caller matrix: detected=True
+[Break-3] Dropped final element: detected=True
+[Break-4] Appended rows (nesting defect): detected=True
+All 4 deliberate defect breaks were successfully detected by the assertions.
+
+--------------------------------------------------------------------------------
+7. TEST EXECUTION SUMMARY
+--------------------------------------------------------------------------------
+- work/R32-T057/check.py: 20 oracle cases + 4 break checks + worked example check: OK
+- python-flatten-list/test_flatten.py: 12 unit test suites (doctest, trace, anchors): OK
+- python-unittest discovery: 64 tests: OK
+- Ruff lint & format checks: All passed.
+================================================================================
