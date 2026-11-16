@@ -1,0 +1,24 @@
+[TC-01] Args=('', '', '', 0) Kwargs={} Precondition=employee.py lines 1-4 string/numeric domain lower bounds
+[TC-02] Args=('Han', 'Solo', 'Accounts', 1000) Kwargs={} Precondition=employee.py lines 1-4 standard employee fixture
+[TC-03] Args=() Kwargs={} Precondition=employee.py lines 1-4 default module constants
+[TC-04] Args=('A', 'B', 'R&D', 500) Kwargs={} Precondition=employee.py lines 1-2 minimal non-empty string length
+[TC-05] Args=('User1', 'Test2', 'IT', 2500) Kwargs={} Precondition=employee.py lines 1-2 string representation
+[TC-06] Args=('Leia', 'Organa-Solo', 'Executive', 5000) Kwargs={} Precondition=employee.py line 2 hyphenated string token
+[TC-07] Args=('Mary Jane', 'Watson', 'Editorial', 3200) Kwargs={} Precondition=employee.py line 1 compound string token
+[TC-08] Args=('Chewbacca', '', 'Co-Pilot', 800) Kwargs={} Precondition=employee.py line 2 empty string boundary
+[TC-09] Args=('', 'Yoda', 'Jedi Council', 0) Kwargs={} Precondition=employee.py line 1 empty string boundary
+[TC-10] Args=('Luke', 'Skywalker', 'Jedi', 0) Kwargs={} Precondition=employee.py line 4 zero salary threshold
+[TC-11] Args=('Lando', 'Calrissian', 'Operations', -500) Kwargs={} Precondition=employee.py line 4 signed numeric domain
+[TC-12] Args=('Wedge', 'Antilles', 'Flight', 1250.75) Kwargs={} Precondition=employee.py line 4 float numeric support
+[TC-13] Args=('Palpatine', 'Emperor', 'Administration', 1000000) Kwargs={} Precondition=employee.py line 4 high-magnitude integer
+[TC-14] Args=('Amélie', 'Poulain', 'Café', 1800) Kwargs={} Precondition=employee.py lines 1-3 UTF-8 unicode encoding
+[TC-15] Args=('太郎', '山田', 'Engineering', 4500) Kwargs={} Precondition=employee.py lines 1-3 multi-byte character support
+[TC-16] Args=('C-3PO', 'Droid', 'Protocol & Translation', 150) Kwargs={} Precondition=employee.py line 3 punctuation symbol support
+[TC-17] Args=('R2-D2', 'Astromech', 'Starship Maintenance', 200) Kwargs={} Precondition=employee.py line 3 spaced string token
+[TC-18] Args=('obi-wan', 'kenobi', 'general', 3000) Kwargs={} Precondition=employee.py lines 1-3 case variance
+[TC-19] Args=('BOBA', 'FETT', 'BOUNTY', 7500) Kwargs={} Precondition=employee.py lines 1-3 case variance
+[TC-20] Args=('Ahsoka', 'Tano', 'Department of Outer Rim Exploration and Peacekeeping Operations', 3800) Kwargs={} Precondition=employee.py line 3 long string support
+[TC-21] Args=('Wicket', 'Ewok', 'Scouting', 0.99) Kwargs={} Precondition=employee.py line 4 decimal fraction support
+[TC-22] Args=('Bail', 'Organa', 'Senate', 9999.999) Kwargs={} Precondition=employee.py line 4 float precision handling
+[TC-23] Args=({'first_name': 'Cassian', 'last_name': 'Andor', 'department': 'Intelligence', 'salary': 2800},) Kwargs={} Precondition=employee.py lines 1-4 dictionary record support
+[TC-24] Args=(('Jyn', 'Erso', 'Special Ops', 2100),) Kwargs={} Precondition=employee.py lines 1-4 sequence record support
