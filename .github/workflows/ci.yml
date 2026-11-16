@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [R32-T035]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.14"
+
+      - name: Install project and pinned development tools
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e ./python-project-for-agentic-coding
+          python -m pip install \
+            pytest==9.1.1 \
+            pytest-cov==7.1.0 \
+            ruff==0.16.7 \
+            mypy==2.3.1 \
+            pre-commit==4.6.2
+
+      - name: Run repeatable verification script
+        run: python work/R32-T035/check.py
+
+      - name: Run full test suite
+        working-directory: python-project-for-agentic-coding
+        run: python -m pytest
+
+      - name: Run Ruff
+        working-directory: python-project-for-agentic-coding
+        run: ruff check .
+
+      - name: Run mypy
+        working-directory: python-project-for-agentic-coding
+        run: mypy src
