@@ -1,0 +1,107 @@
+R32-T056 Single Responsibility Simplification Evidence
+=======================================================
+Task ID: R32-T056
+Target file: python-operator-module/min_max.py
+Target responsibility: Simplify extremum calculation from stdout presentation
+Extracted function: get_min_max(values=prices, *args)
+Aliases: min_max, python_operator_module
+Student URN: e26b07f0709
+Branch: student/e26b07f0709/R32-T056
+
+Tool and Runtime Versions:
+  Python: 3.15.2 (3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)])
+  Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+  Ruff: ruff 0.14.1
+
+Preconditions established by source:
+  Line 1: prices = [100, 45, 345, 639] - Initial price list fixture anchor
+  Line 3: print(min(prices)) - Extrema computation and stdout presentation (min)
+  Line 4: print(max(prices)) - Extrema computation and stdout presentation (max)
+
+Responsibility Analysis & Simplification Contract:
+  - Single Responsibility Simplified: Decoupled extremum computation (min, max)
+    from side-effect presentation (stdout print).
+  - Extracted Function: get_min_max(values=prices, *args)
+  - Public Inputs: An iterable of comparable elements, or positional arguments.
+    Defaults to line 1 prices anchor: [100, 45, 345, 639].
+  - Smallest valid input: [100] (single-element list) -> (100, 100)
+  - Ordinary valid input: [100, 45, 345, 639] from line 1 -> (45, 639)
+  - Return type: tuple (min_value, max_value)
+  - Output ordering: Strictly orders minimum first, maximum second (result[0] <= result[1]).
+  - Side effects: get_min_max is a pure calculation with no stdout, file, or network side-effects.
+  - Input-mutation behavior: Non-mutating; inputs remain identical before and after invocation.
+  - Preserved algorithm: Direct pairwise comparison using Python built-in min() and max().
+  - Standalone script behavior: Running python min_max.py preserves exact output:
+      45
+      639
+
+Before vs After Equivalence Verification:
+  PASS: All 20 test cases evaluated against original baseline algorithm
+  and refactored get_min_max implementation.
+  Agreement rate: 20/20 (100.0%). Zero regressions detected.
+
+Independent Oracle Test Cases (20 evaluated):
+  [TC-01] PASS: Smallest valid input (single-element list) -> Match Oracle=True, Before/After Match=True, Expected=(100, 100)
+  [TC-02] PASS: Ordinary input (prices anchor from line 1) -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+  [TC-03] PASS: Smallest valid single-element tuple -> Match Oracle=True, Before/After Match=True, Expected=(45, 45)
+  [TC-04] PASS: Two-element ordered list -> Match Oracle=True, Before/After Match=True, Expected=(10, 20)
+  [TC-05] PASS: Descending order multi-element sequence -> Match Oracle=True, Before/After Match=True, Expected=(10, 50)
+  [TC-06] PASS: Identical element sequence -> Match Oracle=True, Before/After Match=True, Expected=(7, 7)
+  [TC-07] PASS: All negative integers -> Match Oracle=True, Before/After Match=True, Expected=(-345, -5)
+  [TC-08] PASS: Mixed positive and negative integers with zero -> Match Oracle=True, Before/After Match=True, Expected=(-50, 100)
+  [TC-09] PASS: Floating-point numbers -> Match Oracle=True, Before/After Match=True, Expected=(0.25, 9.75)
+  [TC-10] PASS: Single floating-point element -> Match Oracle=True, Before/After Match=True, Expected=(3.14159, 3.14159)
+  [TC-11] PASS: Multi-element tuple input matching prices anchor -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+  [TC-12] PASS: Power-of-two descending range -> Match Oracle=True, Before/After Match=True, Expected=(64, 1024)
+  [TC-13] PASS: Large integer values -> Match Oracle=True, Before/After Match=True, Expected=(250, 999999999)
+  [TC-14] PASS: Unordered prime numbers -> Match Oracle=True, Before/After Match=True, Expected=(2, 29)
+  [TC-15] PASS: Positional arguments invocation (multiple) -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+  [TC-16] PASS: Positional arguments invocation (pair) -> Match Oracle=True, Before/After Match=True, Expected=(42, 99)
+  [TC-17] PASS: Default invocation without arguments -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+  [TC-18] PASS: Input immutability verification -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+  [TC-19] PASS: Output ordering invariant (min <= max) -> Match Oracle=True, Before/After Match=True, Expected=(100, 800)
+  [TC-20] PASS: Module alias equivalence check -> Match Oracle=True, Before/After Match=True, Expected=(45, 639)
+
+Deliberate Defect-Break Verifications (4 evaluated):
+  [Break-1] Inverted order (max, min): detected=True
+  [Break-2] In-place mutation of input: detected=True
+  [Break-3] Inaccurate maximum calculation: detected=True
+  [Break-4] Extraneous stdout side-effect: detected=True
+
+Native Unit Test Execution Results:
+  Command: /Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/python-operator-module -p test_min_max.py -v
+  Exit code: 0
+  Test Output Summary:
+    test_aliases_identical (test_min_max.TestAliasesAndErrorHandling.test_aliases_identical) ... ok
+    test_empty_sequence_raises_value_error (test_min_max.TestAliasesAndErrorHandling.test_empty_sequence_raises_value_error) ... ok
+    test_descending_elements (test_min_max.TestIndependentOracleEquivalence.test_descending_elements) ... ok
+    test_floating_point_numbers (test_min_max.TestIndependentOracleEquivalence.test_floating_point_numbers) ... ok
+    test_identical_elements (test_min_max.TestIndependentOracleEquivalence.test_identical_elements) ... ok
+    test_mixed_signs (test_min_max.TestIndependentOracleEquivalence.test_mixed_signs) ... ok
+    test_negative_integers (test_min_max.TestIndependentOracleEquivalence.test_negative_integers) ... ok
+    test_positional_arguments_multiple (test_min_max.TestIndependentOracleEquivalence.test_positional_arguments_multiple) ... ok
+    test_positional_arguments_pair (test_min_max.TestIndependentOracleEquivalence.test_positional_arguments_pair) ... ok
+    test_tuple_input (test_min_max.TestIndependentOracleEquivalence.test_tuple_input) ... ok
+    test_two_elements_ordered (test_min_max.TestIndependentOracleEquivalence.test_two_elements_ordered) ... ok
+    test_input_list_not_mutated (test_min_max.TestInputImmutability.test_input_list_not_mutated) ... ok
+    test_ordering_invariant_min_precedes_max (test_min_max.TestOrderingAndReturnType.test_ordering_invariant_min_precedes_max) ... ok
+    test_return_type_is_tuple (test_min_max.TestOrderingAndReturnType.test_return_type_is_tuple) ... ok
+    test_line1_prices_anchor (test_min_max.TestPreconditionsAndAnchors.test_line1_prices_anchor)
+    Line 1 establishes prices = [100, 45, 345, 639]. ... ok
+    test_line3_line4_preconditions (test_min_max.TestPreconditionsAndAnchors.test_line3_line4_preconditions)
+    Lines 3 & 4 establish min(prices) == 45 and max(prices) == 639. ... ok
+    test_get_min_max_pure_no_stdout (test_min_max.TestSideEffectsAndStdout.test_get_min_max_pure_no_stdout) ... ok
+    test_script_execution_stdout (test_min_max.TestSideEffectsAndStdout.test_script_execution_stdout) ... ok
+    test_default_invocation (test_min_max.TestSmallestAndOrdinaryInputs.test_default_invocation)
+    Calling get_min_max() without args defaults to prices anchor. ... ok
+    test_ordinary_input_prices_anchor (test_min_max.TestSmallestAndOrdinaryInputs.test_ordinary_input_prices_anchor)
+    Ordinary input is prices = [100, 45, 345, 639] from line 1. ... ok
+    test_smallest_valid_input_single_element_list (test_min_max.TestSmallestAndOrdinaryInputs.test_smallest_valid_input_single_element_list)
+    Smallest valid input is a single-element list [100]. ... ok
+    test_smallest_valid_input_single_element_tuple (test_min_max.TestSmallestAndOrdinaryInputs.test_smallest_valid_input_single_element_tuple)
+    Smallest valid input as a single-element tuple (45,). ... ok
+    
+    ----------------------------------------------------------------------
+    Ran 22 tests in 0.011s
+    
+    OK
