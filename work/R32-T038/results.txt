@@ -1,0 +1,37 @@
+R32-T038 — Sequence failure behavior
+Python: Python 3.9.6
+Ruff: ruff 0.14.1
+
+Source:
+     4	class Sequence(ABC):
+     5	    """Abstract sequence interface; subclasses must implement both methods.
+     6	
+     7	    Instantiating this class directly raises TypeError because its methods
+     8	    are abstract.
+     9	    """
+    10	    @abstractmethod
+    11	    def __getitem__(self, index):
+    12	        pass
+    13	
+    14	    @abstractmethod
+    15	    def __len__(self):
+    16	        pass
+
+Test command: .venv/bin/python work/R32-T038/check.py
+Nonzero test count: 4
+
+Tests:
+test_abstract_sequence_cannot_be_instantiated (__main__.TestSequence) ... ok
+test_empty_sequence (__main__.TestSequence) ... ok
+test_nonempty_sequence (__main__.TestSequence) ... ok
+test_valid_sequence_after_failed_construction (__main__.TestSequence) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+Lint:
+All checks passed!
+
+Whitespace:
