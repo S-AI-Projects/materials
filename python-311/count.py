@@ -7,8 +7,12 @@ from colorama import Cursor
 colorama.init()
 
 
+def _format_position(row):
+    return Cursor.POS(1, 1 + row)
+
+
 def print_at(row, text):
-    print(Cursor.POS(1, 1 + row) + str(text))
+    print(_format_position(row) + str(text))
     time.sleep(0.03)
 
 
