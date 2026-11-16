@@ -1,0 +1,37 @@
+R32-T039 — get_price_with_tax work measurement
+
+Python:
+Python 3.9.6
+
+Platform:
+Darwin Shreyas-MacBook-Pro-4.local 25.4.0 Darwin Kernel Version 25.4.0: Thu Mar 19 19:33:43 PDT 2026; root:xnu-12377.101.15~1/RELEASE_ARM64_T8142 arm64
+
+Source basis:
+map.py line 2: TAX_RATE = 0.08
+map.py lines 5-6: one price is multiplied by (1 + TAX_RATE)
+map.py lines 9-10: map applies the function to prices and materializes results
+
+Complexity:
+One call: O(1) time.
+Mapping n prices: O(n) total time.
+Materializing n results as a list: O(n) additional space.
+
+Benchmark inputs are generated before timing; all output values are checked after timing.
+Five repetitions per size; median and observed range reported; no timing thresholds.
+
+Exact verification run:
+test_ordinary_price (__main__.GetPriceWithTaxTests) ... ok
+test_sample_prices (__main__.GetPriceWithTaxTests) ... ok
+test_single_price_mapping (__main__.GetPriceWithTaxTests) ... ok
+test_zero_price (__main__.GetPriceWithTaxTests) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
+
+Benchmark: map(get_price_with_tax, prices)
+Input size n | median (seconds) | range (seconds)
+        1000 | 0.00004329 | 0.00004321 - 0.00004933
+       10000 | 0.00038767 | 0.00037733 - 0.00040429
+      100000 | 0.00360571 | 0.00346608 - 0.00385104
