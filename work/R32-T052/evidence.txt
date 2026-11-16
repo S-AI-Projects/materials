@@ -1,0 +1,69 @@
+R32-T052 change_color boundary evidence
+Python: 3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]
+Platform: macOS-26.6.2-arm64-arm-64bit-Mach-O
+Ruff: ruff 0.14.1
+Command: /Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest discover -s /Users/sarakottawar/materials/how-to-use-github -p test_weather.py -v
+
+Source preconditions:
+weather.py line 11: RED = '\033[1;31m'
+weather.py line 13: CYAN = '\033[1;36m'
+weather.py line 17: REVERSE = '\033[;7m'
+weather.py line 18: RESET = '\033[0m'
+weather.py line 21-22: def change_color(color): print(color, end='')
+weather.py line 31: THUNDERSTORM = range(200, 300)
+weather.py line 32: DRIZZLE = range(300, 400)
+weather.py line 133: change_color(REVERSE)
+weather.py line 135: change_color(RESET)
+weather.py line 137: change_color(color)
+weather.py line 143: change_color(RESET)
+weather.py line 157: display_params = ('💥', RED)
+weather.py line 159: display_params = ('💧', CYAN)
+
+Boundary Contract Table:
+- Parameter: color (str)
+- Valid domain: strings representing terminal ANSI escape codes
+- Smallest valid input: '' (empty string, length 0, prints nothing)
+- Ordinary inputs: RED ('\033[1;31m'), CYAN ('\033[1;36m')
+- Boundary inputs: RESET ('\033[0m'), REVERSE ('\033[;7m')
+- Return value: None
+- Mutation: None (input is immutable string)
+- External dependencies: sys.stdout via print(color, end='')
+- Trailing newline: None added (end='')
+- Unsupported inputs: standard Python type handling, no arbitrary rejection
+
+Fixture results:
+[Smallest valid input (empty string)] Input='' Expected='' Actual='' Return=None
+[Ordinary input anchor 1 (RED, thunderstorm)] Input='\x1b[1;31m' Expected='\x1b[1;31m' Actual='\x1b[1;31m' Return=None
+[Ordinary input anchor 2 (CYAN, drizzle)] Input='\x1b[1;36m' Expected='\x1b[1;36m' Actual='\x1b[1;36m' Return=None
+[Documented boundary (RESET code)] Input='\x1b[0m' Expected='\x1b[0m' Actual='\x1b[0m' Return=None
+[Documented boundary (REVERSE code)] Input='\x1b[;7m' Expected='\x1b[;7m' Actual='\x1b[;7m' Return=None
+[Weather condition boundary side A (weather_id=299)] Symbol='💥' Color='\x1b[1;31m' Output='\x1b[1;31m' Return=None
+[Weather condition boundary side B (weather_id=300)] Symbol='💧' Color='\x1b[1;36m' Output='\x1b[1;36m' Return=None
+
+Test output:
+
+test_absence_of_added_newline (test_weather.TestChangeColorBoundaries.test_absence_of_added_newline)
+Verify absence of added newline across multiple valid inputs. ... ok
+test_documented_boundary_reset (test_weather.TestChangeColorBoundaries.test_documented_boundary_reset)
+Test documented reset boundary code: RESET ("\033[0m"). ... ok
+test_documented_boundary_reverse (test_weather.TestChangeColorBoundaries.test_documented_boundary_reverse)
+Test documented reverse-style boundary code: REVERSE ("\033[;7m"). ... ok
+test_input_is_not_mutated (test_weather.TestChangeColorBoundaries.test_input_is_not_mutated)
+Verify change_color does not mutate the input argument. ... ok
+test_ordinary_input_anchor_cyan (test_weather.TestChangeColorBoundaries.test_ordinary_input_anchor_cyan)
+Test ordinary input from anchor 2: CYAN ("\033[1;36m"). ... ok
+test_ordinary_input_anchor_red (test_weather.TestChangeColorBoundaries.test_ordinary_input_anchor_red)
+Test ordinary input from anchor 1: RED ("\033[1;31m"). ... ok
+test_return_behavior_is_none (test_weather.TestChangeColorBoundaries.test_return_behavior_is_none)
+Verify change_color always returns None. ... ok
+test_smallest_valid_input (test_weather.TestChangeColorBoundaries.test_smallest_valid_input)
+Test smallest valid input: empty string of length 0. ... ok
+test_weather_condition_boundary_both_sides (test_weather.TestChangeColorBoundaries.test_weather_condition_boundary_both_sides)
+Test both sides of documented weather condition boundary. ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK
+
+Exit code: 0

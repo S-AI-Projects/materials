@@ -19,6 +19,18 @@ RESET = "\033[0m"
 
 
 def change_color(color):
+    """Changes the terminal display color or style by printing an escape code.
+
+    Args:
+        color (str): ANSI escape sequence or styling string to emit.
+            Supported domain:
+            - Smallest valid input: "" (empty string, length 0).
+            - Ordinary inputs: RED ("\033[1;31m"), CYAN ("\033[1;36m").
+            - Documented boundaries: RESET ("\033[0m"), REVERSE ("\033[;7m").
+
+    Returns:
+        None: Implicitly returns None. Emits color to stdout with end="".
+    """
     print(color, end="")
 
 
