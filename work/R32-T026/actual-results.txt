@@ -1,0 +1,12 @@
+# Actual Outcomes:
+Age: 0 => Actual: You are a Child! | Status: PASS (Smallest valid boundary (age 0))
+Age: 5 => Actual: You are a Child! | Status: PASS (Ordinary Child (age 5))
+Age: 9 => Actual: You are a Child! | Status: PASS (Child upper boundary (age 9))
+Age: 10 => Actual: You are an Adolescent! | Status: PASS (Adolescent lower boundary (age 10))
+Age: 15 => Actual: You are an Adolescent! | Status: PASS (Ordinary Adolescent (age 15))
+Age: 18 => Actual: You are an Adolescent! | Status: PASS (Adolescent upper boundary (age 18))
+Age: 20 => Actual: You are an Adult! | Status: PASS (Adult lower boundary (age 20))
+Age: 35 => Actual: You are an Adult! | Status: PASS (Ordinary Adult (age 35))
+Age: 65 => Actual: You are an Adult! | Status: PASS (Adult upper boundary (age 65))
+Age: 66 => Actual: You are in your Golden Years! | Status: PASS (Golden Years lower boundary (age 66))
+Age: 80 => Actual: You are in your Golden Years! | Status: PASS (Ordinary Golden Years (age 80))

@@ -1,0 +1,20 @@
+# Precondition Anchors from source:
+Line 1: def age_group(age):
+Line 2: if 0 <= age <= 9: result = 'a Child!'
+Line 4: elif 9 < age <= 18: result = 'an Adolescent!'
+Line 6: elif 19 < age <= 65: result = 'an Adult!'
+Line 8: else: result = 'in your Golden Years!'
+Line 10: print('You are ' + result)
+
+# Refactoring Test Matrix Inputs:
+Age: 0 | Expected: 'You are a Child!' | Desc: Smallest valid boundary (age 0)
+Age: 5 | Expected: 'You are a Child!' | Desc: Ordinary Child (age 5)
+Age: 9 | Expected: 'You are a Child!' | Desc: Child upper boundary (age 9)
+Age: 10 | Expected: 'You are an Adolescent!' | Desc: Adolescent lower boundary (age 10)
+Age: 15 | Expected: 'You are an Adolescent!' | Desc: Ordinary Adolescent (age 15)
+Age: 18 | Expected: 'You are an Adolescent!' | Desc: Adolescent upper boundary (age 18)
+Age: 20 | Expected: 'You are an Adult!' | Desc: Adult lower boundary (age 20)
+Age: 35 | Expected: 'You are an Adult!' | Desc: Ordinary Adult (age 35)
+Age: 65 | Expected: 'You are an Adult!' | Desc: Adult upper boundary (age 65)
+Age: 66 | Expected: 'You are in your Golden Years!' | Desc: Golden Years lower boundary (age 66)
+Age: 80 | Expected: 'You are in your Golden Years!' | Desc: Ordinary Golden Years (age 80)
