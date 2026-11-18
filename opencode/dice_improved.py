@@ -69,6 +69,28 @@ DIE_WIDTH = len(DICE_ART[1][0])
 DIE_FACE_SEPARATOR = " "
 
 
+# ==============================================================================
+# Input / Output Contract for parse_input:
+# Preconditions:
+#   - MIN_DICE = 1 (Line 20 establishes lower bound)
+#   - MAX_DICE = 6 (Line 21 establishes upper bound)
+# Public Inputs:
+#   - input_string: str - Candidate integer representation from user/caller.
+# Expected Output:
+#   - int: Parsed integer value guaranteed to satisfy MIN_DICE <= val <= MAX_DICE.
+# Observable Mutations / State Changes:
+#   - Zero mutations. Pure parsing function with no side effects on caller or globals.
+# External Dependencies:
+#   - Standard builtins only (int, str.strip, ValueError). External I/O is decoupled.
+# Domain Boundaries:
+#   - Smallest valid input: "1" (or stripped " 1 ") -> 1
+#   - Ordinary valid input: "3" -> 3
+#   - Upper boundary input: "6" -> 6
+#   - Invalid inputs (< MIN_DICE, > MAX_DICE, non-integers) -> ValueError
+# Source Fixture Anchors:
+#   - roll_results = [] (Line 97)
+#   - dice_faces = [] (Line 135)
+# ==============================================================================
 def parse_input(input_string: str) -> int:
     """Validate input string and return as an integer.
 
