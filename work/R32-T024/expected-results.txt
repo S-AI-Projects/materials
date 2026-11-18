@@ -1,0 +1,9 @@
+# Expected Outcomes (Round-trip Identity D == decode(encode(D))):
+Desc: Smallest valid input (empty dict) => Expected: Identity Preserved (True)
+Desc: Single integer field => Expected: Identity Preserved (True)
+Desc: Single string field => Expected: Identity Preserved (True)
+Desc: Single float field => Expected: Identity Preserved (True)
+Desc: Single boolean field => Expected: Identity Preserved (True)
+Desc: Nested dict and list => Expected: Identity Preserved (True)
+Desc: Ordinary valid input (training.json fixture) => Expected: Identity Preserved (True)
+Desc: 25 randomized property runs => Expected: Identity Preserved (True)

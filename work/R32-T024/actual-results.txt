@@ -1,0 +1,9 @@
+# Actual Outcomes:
+Desc: Smallest valid input (empty dict) => Status: PASS
+Desc: Single integer field => Status: PASS
+Desc: Single string field => Status: PASS
+Desc: Single float field => Status: PASS
+Desc: Single boolean field => Status: PASS
+Desc: Nested dict and list => Status: PASS
+Desc: Ordinary valid input (training.json fixture) => Status: PASS
+Desc: 25 randomized property runs => Status: PASS
