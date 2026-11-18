@@ -1,0 +1,30 @@
+=== Task R32-T022 Verification Evidence ===
+Target: altair-python/steps.py (Boundary Contract)
+Boundary Cases Checked: 7/7
+
+=== Native Unit Test Output ===
+test_chart_creation_pipeline_with_mock_altair (test_steps.TestStepsBoundaryContract)
+Verify Chart call chain when altair is present or mocked. ... ok
+test_ordinary_valid_input (test_steps.TestStepsBoundaryContract)
+Verify ordinary valid input: standard 7-day dataset. ... ok
+test_precondition_anchors_and_defaults (test_steps.TestStepsBoundaryContract)
+Verify fixture anchors: 7 days and corresponding steps exist. ... ok
+test_smallest_valid_input (test_steps.TestStepsBoundaryContract)
+Verify smallest valid input: single-element dataset (length 1). ... ok
+test_unsupported_data_type (test_steps.TestStepsBoundaryContract)
+Verify unsupported data types (list, int, str) raise ValueError. ... ok
+test_unsupported_missing_day_column (test_steps.TestStepsBoundaryContract)
+Verify missing 'Day' column raises ValueError. ... ok
+test_unsupported_missing_steps_column (test_steps.TestStepsBoundaryContract)
+Verify missing 'Steps' column raises ValueError. ... ok
+test_unsupported_none_input (test_steps.TestStepsBoundaryContract)
+Verify explicitly unsupported input: None raises ValueError. ... ok
+test_valid_boundary_empty_dataset (test_steps.TestStepsBoundaryContract)
+Verify valid boundary: empty dataset (length 0). ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)

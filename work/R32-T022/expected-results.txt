@@ -1,0 +1,8 @@
+# Expected Results (Boundary Contract):
+Input: {'Day': ['1-Mon'], 'Steps': [1000]} => Expected: Valid (Smallest valid input (1 row))
+Input: {'Day': ['1-Mon', '2-Tue', '3-Wed', '4-Thu', '5-Fri', '6-Sat', '7-Sun'], 'Steps': [6200, 8400, 7100, 9800, 5500, 9870, 3769]} => Expected: Valid (Ordinary valid input (7 rows))
+Input: {'Day': [], 'Steps': []} => Expected: Valid (Valid boundary (empty dataset, 0 rows))
+Input: None => Expected: ValueError: Data cannot be None (Unsupported: None data)
+Input: {'Day': ['1-Mon']} => Expected: ValueError: Data must contain both 'Day' and 'Steps' fields (Unsupported: Missing Steps column)
+Input: {'Steps': [5000]} => Expected: ValueError: Data must contain both 'Day' and 'Steps' fields (Unsupported: Missing Day column)
+Input: 12345 => Expected: ValueError: Unsupported data type: <class 'int'> (Unsupported: Integer data type)
