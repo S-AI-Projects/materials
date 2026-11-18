@@ -1,0 +1,15 @@
+# Precondition Anchors:
+Line 58: with open(file_path, encoding='utf-8') as file:
+Line 59: document = json.load(file)
+Line 60: return encode_document(document)
+Line 64: return decode_document(data)
+
+# Invariant & Property Test Matrix:
+Input: {} | Desc: Smallest valid input (empty dict)
+Input: {'scalar_int': 42} | Desc: Single integer field
+Input: {'scalar_str': 'hello world'} | Desc: Single string field
+Input: {'scalar_float': 3.14159} | Desc: Single float field
+Input: {'scalar_bool': True} | Desc: Single boolean field
+Input: {'nested': {'a': 1, 'b': [2, 3]}} | Desc: Nested dict and list
+Input: {'program': {'metadata': {'author': 'John Doe', 'goals': ['health improvement', 'fat loss']}, 'exercises': {'plank': {'m | Desc: Ordinary valid input (training.json fixture)
+Input: 'Property Tests (25 iterations)' | Desc: 25 randomized property runs

@@ -1,0 +1,27 @@
+=== Task R32-T024 Verification Evidence ===
+Target: python-serialize/hierarchical-data/bson_demo.py
+Invariant Cases Evaluated: 8/8
+Round-trip and Immutability Invariants: 100% Verified
+
+=== Native Unit Test Output ===
+test_determinism_invariant (test_bson_demo.TestBsonDemoInvariants)
+Verify identical inputs produce bit-for-bit identical BSON outputs. ... ok
+test_immutability_invariant (test_bson_demo.TestBsonDemoInvariants)
+Verify serialization does not mutate the caller input document. ... ok
+test_malformed_bytes_rejection (test_bson_demo.TestBsonDemoInvariants)
+Verify malformed BSON bytes raise ValueError during deserialization. ... ok
+test_ordinary_valid_input_training_fixture_roundtrip (test_bson_demo.TestBsonDemoInvariants)
+Verify ordinary valid input: training.json document roundtrip invariant. ... ok
+test_precondition_anchors (test_bson_demo.TestBsonDemoInvariants)
+Verify training.json fixture anchor exists and contains valid JSON. ... ok
+test_property_generated_structures_roundtrip (test_bson_demo.TestBsonDemoInvariants)
+Property test: evaluate 50 randomly generated documents across varied types and nestings. ... ok
+test_smallest_valid_input_roundtrip (test_bson_demo.TestBsonDemoInvariants)
+Verify smallest valid input: empty dict {} roundtrip invariant. ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.002s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)
