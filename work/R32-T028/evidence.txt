@@ -1,0 +1,27 @@
+=== Task R32-T028 Verification Evidence ===
+Target: python-recursion/names.py (Failure & Sentinel Coverage)
+Test Cases Evaluated: 7/7
+Absent-result sentinel None and TypeError failure branches verified.
+
+=== Native Unit Test Output ===
+test_absent_result_sentinel_path (test_names.TestNamesRecursionFailureBehavior)
+Verify absent name triggers documented terminal sentinel None. ... ok
+test_failure_branch_invalid_target_type (test_names.TestNamesRecursionFailureBehavior)
+Verify non-string target argument raises TypeError. ... ok
+test_failure_branch_invalid_tree_type (test_names.TestNamesRecursionFailureBehavior)
+Verify non-list tree argument raises TypeError. ... ok
+test_immutability_invariant (test_names.TestNamesRecursionFailureBehavior)
+Verify names hierarchy is not mutated by traversal operations. ... ok
+test_ordinary_valid_input_found_leaves (test_names.TestNamesRecursionFailureBehavior)
+Verify ordinary valid searches locate top-level and deeply nested leaves. ... ok
+test_precondition_anchors (test_names.TestNamesRecursionFailureBehavior)
+Verify fixture hierarchy and total leaf count anchors. ... ok
+test_smallest_valid_input_empty_list_boundary (test_names.TestNamesRecursionFailureBehavior)
+Verify valid empty list boundary yields absent sentinel and 0 count. ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.000s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)

@@ -1,0 +1,8 @@
+# Expected Outcomes (Failure, Sentinel, or Found Value):
+Desc: Smallest valid boundary (empty tree) => Expected: ABSENT_SENTINEL (None)
+Desc: Ordinary valid input (found top-level leaf) => Expected: Adam
+Desc: Ordinary valid input (found deep nested leaf) => Expected: Chet
+Desc: Documented absent-result sentinel path => Expected: ABSENT_SENTINEL (None)
+Desc: Empty string absent-result sentinel path => Expected: ABSENT_SENTINEL (None)
+Desc: Failure branch: invalid tree type (int) => Expected: TypeError
+Desc: Failure branch: invalid target type (int) => Expected: TypeError
