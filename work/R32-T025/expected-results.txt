@@ -1,0 +1,6 @@
+# Expected Outcomes (Deterministic Repeatability & Purity):
+Desc: Smallest valid input (1 data row buffer) => Expected: Deterministic & Isolated (True)
+Desc: Ordinary valid input (full hrdata.csv fixture) => Expected: Deterministic & Isolated (True)
+Desc: Repeatability across 10 independent calls => Expected: Deterministic & Isolated (True)
+Desc: Input & memory isolation test => Expected: Deterministic & Isolated (True)
+Desc: Dependency injection seam check => Expected: Deterministic & Isolated (True)
