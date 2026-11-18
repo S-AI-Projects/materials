@@ -1,0 +1,6 @@
+# Expected State Transitions and Outcomes:
+Desc: Smallest valid input (pass) => Intent: pass, Syntax: True
+Desc: Ordinary valid input (even) => Intent: even, Syntax: True
+Desc: Ordinary valid input (odd) => Intent: odd, Syntax: True
+Desc: Ordinary valid input (fibonacci) => Intent: fibonacci, Syntax: True
+Desc: Ordinary valid input (reverse) => Intent: reverse, Syntax: True

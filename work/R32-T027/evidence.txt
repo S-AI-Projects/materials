@@ -1,0 +1,25 @@
+=== Task R32-T027 Verification Evidence ===
+Target: github-copilot/README.md (Runnable Worked Example)
+Transition Cases Evaluated: 5/5
+Step 1 -> Step 2 -> Step 3 -> Step 4 Transitions: 100% Verified
+
+=== Native Unit Test Output ===
+test_doctest (test_copilot_example.TestCopilotWorkedExample)
+Run doctests embedded in copilot_complete. ... ok
+test_ordinary_valid_input_even (test_copilot_example.TestCopilotWorkedExample)
+Verify ordinary valid input (# check even) asserts intermediate and final state. ... ok
+test_ordinary_valid_input_fibonacci (test_copilot_example.TestCopilotWorkedExample)
+Verify ordinary valid input for fibonacci generation. ... ok
+test_purity_and_repeatability (test_copilot_example.TestCopilotWorkedExample)
+Verify identical prompts produce identical state transitions over repeated calls. ... ok
+test_smallest_valid_input (test_copilot_example.TestCopilotWorkedExample)
+Verify smallest valid input (# do nothing) yields 'pass'. ... ok
+test_type_error_handling (test_copilot_example.TestCopilotWorkedExample)
+Verify non-string prompt raises TypeError. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.001s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)

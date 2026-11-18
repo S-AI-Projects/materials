@@ -1,0 +1,6 @@
+# Actual Outcomes:
+Desc: Smallest valid input (pass) => Status: PASS | Code: 'pass'
+Desc: Ordinary valid input (even) => Status: PASS | Code: 'def is_even(n):\n    return n % 2 == 0'
+Desc: Ordinary valid input (odd) => Status: PASS | Code: 'def is_odd(n):\n    return n % 2 != 0'
+Desc: Ordinary valid input (fibonacci) => Status: PASS | Code: 'def fib(n):\n    if n <= 1:\n        return n\n    return fib(n - 1) + fib(n - 2)'
+Desc: Ordinary valid input (reverse) => Status: PASS | Code: 'def rev(s):\n    return s[::-1]'

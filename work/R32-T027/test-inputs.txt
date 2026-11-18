@@ -1,0 +1,10 @@
+# Precondition Anchors from README.md:
+Line 1: # GitHub Copilot: Fly With Python at the Speed of Thought
+Line 3: Supplementing materials for the tutorial on GitHub Copilot
+
+# Worked Example Transition Test Inputs:
+Prompt: '# do nothing' | Desc: Smallest valid input (pass)
+Prompt: '# Check if number is even\ndef is_even(n):' | Desc: Ordinary valid input (even)
+Prompt: '# Check if number is odd\ndef is_odd(n):' | Desc: Ordinary valid input (odd)
+Prompt: '# Calculate fibonacci\ndef fib(n):' | Desc: Ordinary valid input (fibonacci)
+Prompt: '# Reverse string\ndef rev(s):' | Desc: Ordinary valid input (reverse)
