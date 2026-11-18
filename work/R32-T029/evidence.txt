@@ -1,0 +1,26 @@
+=== Task R32-T029 Verification Evidence ===
+Target: python-parallel-processing/06_ctypes/fibonacci_ctypes.py
+Task: Measure scaling/complexity of naive-recursive fibonacci
+Complexity Determined: O(2^n)
+Sizes Measured: n=10, n=15, n=20 (5 repetitions each)
+
+=== Scaling Data ===
+  n=10: op-counts=[177, 177, 177, 177, 177], median=177, range=0
+  n=15: op-counts=[1973, 1973, 1973, 1973, 1973], median=1973, range=0
+  n=20: op-counts=[21891, 21891, 21891, 21891, 21891], median=21891, range=0
+Scaling ratio (Δn=5): 11.1469 -> confirming O(2^n)
+
+=== Native Unit Test Results ===
+test_base_cases ... ok
+test_complexity_comment_present_in_source ... ok
+test_five_repetitions_give_identical_counts ... ok
+test_fixture_anchor_present_in_source ... ok
+test_known_small_values ... ok
+test_scaling_exponential_ratio ... ok
+test_scaling_n10_operation_count ... ok
+test_scaling_n15_operation_count ... ok
+test_scaling_n20_operation_count ... ok
+
+Ran 9 tests - OK
+
+Verification Result: SUCCESS (Exit Code 0)
