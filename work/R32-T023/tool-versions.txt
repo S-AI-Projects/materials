@@ -1,0 +1,4 @@
+Python Version: 3.9.6 (default, Aug 25 2026, 21:26:21) 
+[Clang 21.0.0 (clang-2100.3.34.2)]
+Platform: macOS-27.2.1-arm64-arm-64bit
+Interpreter: /Library/Developer/CommandLineTools/usr/bin/python3
