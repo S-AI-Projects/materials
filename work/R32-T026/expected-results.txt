@@ -1,0 +1,12 @@
+# Expected Outcomes (Refactored Single Responsibility):
+Age: 0 => Expected: You are a Child! (Smallest valid boundary (age 0))
+Age: 5 => Expected: You are a Child! (Ordinary Child (age 5))
+Age: 9 => Expected: You are a Child! (Child upper boundary (age 9))
+Age: 10 => Expected: You are an Adolescent! (Adolescent lower boundary (age 10))
+Age: 15 => Expected: You are an Adolescent! (Ordinary Adolescent (age 15))
+Age: 18 => Expected: You are an Adolescent! (Adolescent upper boundary (age 18))
+Age: 20 => Expected: You are an Adult! (Adult lower boundary (age 20))
+Age: 35 => Expected: You are an Adult! (Ordinary Adult (age 35))
+Age: 65 => Expected: You are an Adult! (Adult upper boundary (age 65))
+Age: 66 => Expected: You are in your Golden Years! (Golden Years lower boundary (age 66))
+Age: 80 => Expected: You are in your Golden Years! (Ordinary Golden Years (age 80))
