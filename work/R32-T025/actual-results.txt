@@ -1,0 +1,6 @@
+# Actual Outcomes:
+Desc: Smallest valid input (1 data row buffer) => Status: PASS
+Desc: Ordinary valid input (full hrdata.csv fixture) => Status: PASS
+Desc: Repeatability across 10 independent calls => Status: PASS
+Desc: Input & memory isolation test => Status: PASS
+Desc: Dependency injection seam check => Status: PASS

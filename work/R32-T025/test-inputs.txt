@@ -1,0 +1,12 @@
+# Precondition Anchors from source:
+Line 3: df = pandas.read_csv('hrdata.csv')
+Line 8: df = pandas.read_csv('hrdata.csv', index_col='Name')
+Line 11: parse_dates=['Hire Date'], date_format='%m/%d/%y'
+Line 20: header=0, names=['Employee', 'Hired', 'Salary', 'Sick Days']
+
+# Repeatability & Isolation Test Inputs:
+Input: 'io.StringIO(SMALLEST_CSV)' | Desc: Smallest valid input (1 data row buffer)
+Input: '/Users/pushkarjaiswal/.gemini/antigravity/scratch/materials/python-csv/hrdata.csv' | Desc: Ordinary valid input (full hrdata.csv fixture)
+Input: '10 repeated load_hr_data calls' | Desc: Repeatability across 10 independent calls
+Input: 'Caller dictionary mutation check' | Desc: Input & memory isolation test
+Input: 'Custom reader dependency injection' | Desc: Dependency injection seam check

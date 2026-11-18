@@ -1,0 +1,27 @@
+=== Task R32-T025 Verification Evidence ===
+Target: python-csv/read_csv_with_pandas.py (Repeatability Seam)
+Repeatability Cases Evaluated: 5/5
+Input Isolation & 10-Iteration Repeatability: 100% Verified
+
+=== Native Unit Test Output ===
+test_dependency_injection_seam (test_read_csv.TestReadCsvRepeatability)
+Verify custom reader injection seam functions as intended. ... ok
+test_input_isolation (test_read_csv.TestReadCsvRepeatability)
+Verify mutating caller structures does not affect subsequent read_csv calls. ... ok
+test_ordinary_valid_input_hrdata_fixture (test_read_csv.TestReadCsvRepeatability)
+Verify ordinary valid input loading full hrdata.csv. ... ok
+test_precondition_anchors (test_read_csv.TestReadCsvRepeatability)
+Verify hrdata.csv exists and has expected header and row count. ... ok
+test_renamed_columns_mapping (test_read_csv.TestReadCsvRepeatability)
+Verify header=0 with custom names maps columns correctly. ... ok
+test_repeatability_over_repeated_calls (test_read_csv.TestReadCsvRepeatability)
+Verify 10 repeated calls produce bit-for-bit identical outputs. ... ok
+test_smallest_valid_input_isolated (test_read_csv.TestReadCsvRepeatability)
+Verify smallest valid input (1 data row) via in-memory StringIO buffer. ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.001s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)
