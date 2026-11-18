@@ -1,0 +1,25 @@
+=== Task R32-T023 Verification Evidence ===
+Target: github-copilot-code-review/README.md (Differential Reference)
+Differential Cases Verified: 6/6
+Primary implementation matches Independent Reference 100%.
+
+=== Native Unit Test Output ===
+test_ordinary_valid_input_clean_feature_branch (test_code_review.TestCodeReviewDifferential)
+Verify ordinary valid clean diff on player-names feature branch. ... ok
+test_ordinary_valid_input_with_findings (test_code_review.TestCodeReviewDifferential)
+Verify ordinary input triggering review findings matches reference. ... ok
+test_precondition_anchors (test_code_review.TestCodeReviewDifferential)
+Verify README precondition anchors. ... ok
+test_repeated_call_idempotence (test_code_review.TestCodeReviewDifferential)
+Verify purity and repeatability over repeated calls. ... ok
+test_smallest_valid_input_differential (test_code_review.TestCodeReviewDifferential)
+Verify smallest valid input produces matching approval. ... ok
+test_type_error_handling (test_code_review.TestCodeReviewDifferential)
+Verify non-string inputs raise TypeError. ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.000s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)

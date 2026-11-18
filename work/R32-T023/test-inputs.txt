@@ -1,0 +1,14 @@
+# Precondition Anchors from README.md:
+Line 1: Real Python tutorial baseline
+Line 5: Archive anchor pop-quiz.zip
+Line 7: Base branch main
+Line 8: Feature branch feature/player-names
+Line 9: Final feature branch feature/player-names-final
+
+# Differential Comparison Test Inputs:
+Branch: main | Diff: '' | Desc: Smallest valid input (empty diff)
+Branch: feature/player-names | Diff: '+ valid_line = 1\n' | Desc: Ordinary clean addition
+Branch: feature/player-names | Diff: '+ # TODO: complete player name validation\n' | Desc: TODO anti-pattern detection
+Branch: feature/player-names-final | Diff: "+ print('DEBUGGING player score')\n" | Desc: Debug print detection
+Branch: feature/player-names-final | Diff: '+ try:\n+     x = 1\n+ except:\n+     pass\n' | Desc: Bare except detection
+Branch: main | Diff: "+ # TODO: first\n+ print('debug msg')\n+ except:\n" | Desc: Multiple simultaneous findings
