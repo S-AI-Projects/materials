@@ -1,0 +1,8 @@
+# Actual Outcomes:
+Desc: Smallest valid boundary (empty tree) => Actual: ABSENT_SENTINEL (None) | Status: PASS
+Desc: Ordinary valid input (found top-level leaf) => Actual: Adam | Status: PASS
+Desc: Ordinary valid input (found deep nested leaf) => Actual: Chet | Status: PASS
+Desc: Documented absent-result sentinel path => Actual: ABSENT_SENTINEL (None) | Status: PASS
+Desc: Empty string absent-result sentinel path => Actual: ABSENT_SENTINEL (None) | Status: PASS
+Desc: Failure branch: invalid tree type (int) => Actual: TypeError | Status: PASS
+Desc: Failure branch: invalid target type (int) => Actual: TypeError | Status: PASS

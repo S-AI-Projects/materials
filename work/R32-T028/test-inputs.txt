@@ -1,0 +1,14 @@
+# Precondition Anchors from source:
+Line 14: names = [...] nested hierarchy definition
+Line 15: 'Adam' (first top-level leaf item)
+Line 17: 'Bob' (nested list lead item)
+Line 19: 'Chet', 'Cat' (deeply nested leaves)
+
+# Failure & Absent-Result Test Inputs:
+Target: 'Adam' | Tree: [] | Desc: Smallest valid boundary (empty tree)
+Target: 'Adam' | Tree: ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', [ | Desc: Ordinary valid input (found top-level leaf)
+Target: 'Chet' | Tree: ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', [ | Desc: Ordinary valid input (found deep nested leaf)
+Target: 'Zelda' | Tree: ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', [ | Desc: Documented absent-result sentinel path
+Target: '' | Tree: ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', [ | Desc: Empty string absent-result sentinel path
+Target: 'Adam' | Tree: 12345 | Desc: Failure branch: invalid tree type (int)
+Target: 12345 | Tree: ['Adam', ['Bob', ['Chet', 'Cat'], 'Barb', 'Bert'], 'Alex', [ | Desc: Failure branch: invalid target type (int)
