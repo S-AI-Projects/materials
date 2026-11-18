@@ -1,0 +1,6 @@
+# Actual scaling measurement results (5 repetitions each)
+n=10: counts=[177, 177, 177, 177, 177], median=177, range=0 | Status: PASS
+n=15: counts=[1973, 1973, 1973, 1973, 1973], median=1973, range=0 | Status: PASS
+n=20: counts=[21891, 21891, 21891, 21891, 21891], median=21891, range=0 | Status: PASS
+# Exponential ratio: 11.1469 (n=10->15) / 11.0953 (n=15->20)
+# Native unit tests: 9 passed

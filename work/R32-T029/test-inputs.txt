@@ -1,0 +1,9 @@
+# Scaling measurement inputs
+n=10, repetitions=5
+n=15, repetitions=5
+n=20, repetitions=5
+
+# Correctness check inputs
+fib(10) expected=55
+fib(15) expected=610
+fib(20) expected=6765

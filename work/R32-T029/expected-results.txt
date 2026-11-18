@@ -1,0 +1,6 @@
+# Expected operation counts (recursive calls per input)
+n=10: op-count=177
+n=15: op-count=1973
+n=20: op-count=21891
+# Complexity: O(2^n)
+# Scaling ratio (Δn=5): ~11.1 (consistent with 2^3.5)
