@@ -1,0 +1,14 @@
+# Precondition Anchors:
+chunks = [] (Line 21 of python-list/chunks.py)
+
+# Literal Inputs for split_list(list_object, chunk_size):
+Input: list_object=[], chunk_size=1 | Description: Smallest valid input (empty list)
+Input: list_object=[1], chunk_size=1 | Description: Smallest non-empty list (single element)
+Input: list_object=[10, 20, 30, 40], chunk_size=2 | Description: Ordinary input (even division)
+Input: list_object=[1, 2, 3, 4, 5], chunk_size=2 | Description: Ordinary input (uneven division)
+Input: list_object=['alpha', 'beta', 'gamma', 'delta', 'epsilon'], chunk_size=3 | Description: Ordinary input with strings
+Input: list_object=[1, 2, 3], chunk_size=3 | Description: Domain boundary (chunk_size == len)
+Input: list_object=[1, 2, 3], chunk_size=10 | Description: Domain boundary (chunk_size > len)
+Input: list_object=[7, 7, 7, 7], chunk_size=2 | Description: Domain boundary (repeated integer values)
+Input: list_object=['a', 'a', 'b', 'b', 'a'], chunk_size=2 | Description: Domain boundary (repeated string values)
+Input: list_object=[42], chunk_size=5 | Description: Single element with larger chunk size
