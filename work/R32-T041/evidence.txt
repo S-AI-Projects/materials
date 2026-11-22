@@ -1,0 +1,38 @@
+=== Task R32-T041 Verification Evidence ===
+Target: python-list/chunks.py (split_list)
+Precondition Anchor Verified: 'chunks = []' at Line 21
+Explicit Oracle Test Cases Passed: 10/10
+Native Unit Tests Executed: 12 (All Passed)
+
+=== Native Unit Test Output ===
+test_chunk_size_equal_to_list_length (test_chunks.TestSplitListContract)
+Boundary: chunk_size equal to list length produces single chunk. ... ok
+test_chunk_size_greater_than_list_length (test_chunks.TestSplitListContract)
+Boundary: chunk_size greater than list length produces single chunk. ... ok
+test_input_non_mutation (test_chunks.TestSplitListContract)
+Verify split_list does not mutate caller's original list. ... ok
+test_ordinary_input_even_split (test_chunks.TestSplitListContract)
+Ordinary input evenly divided into equal-sized chunks. ... ok
+test_ordinary_input_string_elements (test_chunks.TestSplitListContract)
+Ordinary input with string elements. ... ok
+test_ordinary_input_uneven_split (test_chunks.TestSplitListContract)
+Ordinary input where the last chunk has fewer elements. ... ok
+test_output_isolation (test_chunks.TestSplitListContract)
+Verify modifying returned chunks does not mutate the source list. ... ok
+test_precondition_anchor_present (test_chunks.TestSplitListContract)
+Verify the source fixture anchor 'chunks = []' is present with source line. ... ok
+test_repeated_mixed_values_boundary (test_chunks.TestSplitListContract)
+Boundary: alternating repeated values across chunk boundaries. ... ok
+test_repeated_values_boundary (test_chunks.TestSplitListContract)
+Boundary: input with identical repeated values retains duplicate elements. ... ok
+test_smallest_valid_input_empty_list (test_chunks.TestSplitListContract)
+Smallest valid input: empty list with chunk size 1 yields empty list. ... ok
+test_smallest_valid_input_single_element (test_chunks.TestSplitListContract)
+Smallest non-empty list with chunk size 1 yields single chunk. ... ok
+
+----------------------------------------------------------------------
+Ran 12 tests in 0.001s
+
+OK
+
+Verification Result: SUCCESS (Exit Code 0)
