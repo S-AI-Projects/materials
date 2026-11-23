@@ -1,0 +1,26 @@
+R32-T004 Verification Summary
+==============================
+Target module: queue/src/graph.py (City NamedTuple and Queue invariants)
+Precondition citation: Line 11 City definition & Line 23 from_dict
+Canonical fixture: ['Athens', 'Berlin', 'Cairo', 'Dublin'] (matched exactly [Athens, Berlin, Cairo, Dublin])
+Property tests: 100 bounded cases with seed=42 verified
+Deliberate invariant breakage: correctly caught and documented
+Native unit tests: 5 executed, 5 passed
+Exit status: 0
+
+Unittest Output:
+test_city_from_dict (test_graph.TestCityQueueInvariants.test_city_from_dict)
+Line 23: Verify City.from_dict construction from graph node attributes. ... ok
+test_city_namedtuple_instantiation_and_immutability (test_graph.TestCityQueueInvariants.test_city_namedtuple_instantiation_and_immutability)
+Line 11: Verify City fields, types, and immutability. ... ok
+test_empty_state_behavior (test_graph.TestCityQueueInvariants.test_empty_state_behavior)
+Documented empty-state behavior: ... ok
+test_required_fixture_fifo_invariant (test_graph.TestCityQueueInvariants.test_required_fixture_fifo_invariant)
+Required Fixture: ... ok
+test_separate_instances_do_not_share_contents (test_graph.TestCityQueueInvariants.test_separate_instances_do_not_share_contents)
+Invariant: Separate queue instances containing City instances are completely isolated. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

@@ -1,0 +1,20 @@
+Canonical Fixture Input Sequence:
+1. enqueue(City(Athens))
+2. enqueue(City(Berlin))
+3. enqueue(City(Cairo))
+4. dequeue() -> Athens
+5. dequeue() -> Berlin
+6. enqueue(City(Dublin))
+7. drain
+
+Property test cases: 100 deterministic pseudo-random sequences (seed=42)
+Case 001: 30 operations. Sample: ['enqueue(Berlin)', 'enqueue(Edinburgh)', 'enqueue(Dublin)', 'enqueue(Berlin)', 'dequeue()->Berlin']
+Case 002: 19 operations. Sample: ['enqueue(Kyoto)', 'enqueue(Kyoto)', 'enqueue(Berlin)', 'enqueue(Dublin)', 'enqueue(Berlin)']
+Case 003: 17 operations. Sample: ['enqueue(Florence)', 'enqueue(Dublin)', 'enqueue(Florence)', 'enqueue(Edinburgh)', 'enqueue(Dublin)']
+Case 004: 22 operations. Sample: ['enqueue(Florence)', 'enqueue(Cairo)', 'dequeue()->Florence', 'enqueue(Berlin)', 'enqueue(Berlin)']
+Case 005: 15 operations. Sample: ['enqueue(Istanbul)', 'enqueue(Edinburgh)', 'dequeue()->Istanbul', 'dequeue()->Edinburgh', 'enqueue(Kyoto)']
+Case 006: 12 operations. Sample: ['enqueue(Berlin)', 'dequeue()->Berlin', 'enqueue(Helsinki)', 'enqueue(Istanbul)', 'enqueue(Cairo)']
+Case 007: 16 operations. Sample: ['enqueue(Edinburgh)', 'enqueue(Florence)', 'enqueue(Istanbul)', 'enqueue(Berlin)', 'enqueue(Dublin)']
+Case 008: 25 operations. Sample: ['enqueue(Dublin)', 'dequeue()->Dublin', 'enqueue(Cairo)', 'dequeue()->Cairo', 'enqueue(Kyoto)']
+Case 009: 17 operations. Sample: ['enqueue(Berlin)', 'enqueue(Istanbul)', 'enqueue(Athens)', 'dequeue()->Berlin', 'dequeue()->Istanbul']
+Case 010: 25 operations. Sample: ['enqueue(Cairo)', 'enqueue(Edinburgh)', 'enqueue(Athens)', 'dequeue()->Cairo', 'dequeue()->Edinburgh']

@@ -1,0 +1,4 @@
+Canonical Fixture Expected Removals: ['Athens', 'Berlin', 'Cairo', 'Dublin']
+Empty-state expected: len == 0, dequeue() raises IndexError
+Property invariants: FIFO order and len(queue) == len(model) after every op
+Deliberate violation expectation: BrokenLIFOQueue and BrokenSizeQueue fail with AssertionError

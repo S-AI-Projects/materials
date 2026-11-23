@@ -9,6 +9,19 @@ from queues import MutableMinHeap, Queue, Stack
 
 
 class City(NamedTuple):
+    """Represents a city node in the road network graph.
+
+    Preconditions & Invariants:
+    - Line 11: Defined as an immutable NamedTuple with attributes:
+      name (str), country (str), year (int | None), latitude (float), longitude (float).
+    - When queued in FIFO structures (such as `Queue` used in BFS and shortest path):
+      1. FIFO ordering invariant: Elements are dequeued in the exact order enqueued.
+      2. Size invariant: `len(queue)` accurately matches the number of remaining elements after every enqueue/dequeue.
+      3. Instance isolation invariant: Multiple separate queue instances containing City objects
+         do not share state, storage, or mutated contents.
+      4. Empty state invariant: An empty queue has len == 0, and dequeuing from an empty queue raises IndexError.
+    """
+
     name: str
     country: str
     year: int | None

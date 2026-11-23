@@ -1,0 +1,5 @@
+Canonical Fixture Actual Removals: ['Athens', 'Berlin', 'Cairo', 'Dublin']
+Property test sequences passed: 100/100
+Deliberate FIFO violation captured: Expected [City(name='Athens', country='Greece', year=-800, latitude=37.98, longitude=23.72), City(name='Berlin', country='Germany', year=1237, latitude=52.52, longitude=13.4), City(name='Cairo', country='Egypt', year=969, latitude=30.04, longitude=31.23), City(name='Dublin', country='Ireland', year=841, latitude=53.34, longitude=-6.26)], got [City(name='Cairo', country='Egypt', year=969, latitude=30.04, longitude=31.23), City(name='Berlin', country='Germany', year=1237, latitude=52.52, longitude=13.4), City(name='Dublin', country='Ireland', year=841, latitude=53.34, longitude=-6.26), City(name='Athens', country='Greece', year=-800, latitude=37.98, longitude=23.72)]
+Deliberate Size violation captured: Expected size 1, got 2
+Native unit tests passed: 5/5
