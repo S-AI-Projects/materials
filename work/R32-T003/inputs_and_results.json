@@ -1,0 +1,307 @@
+{
+  "reference_checks_count": 25,
+  "native_tests_count": 5,
+  "all_checks_passed": true,
+  "records": [
+    {
+      "test_id": 1,
+      "input": "",
+      "expected": "Hello  and welcome!",
+      "actual": "Hello  and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 2,
+      "input": "a",
+      "expected": "Hello a and welcome!",
+      "actual": "Hello a and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 3,
+      "input": "42",
+      "expected": "Hello 42 and welcome!",
+      "actual": "Hello 42 and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 4,
+      "input": "Bob",
+      "expected": "Hello Bob and welcome!",
+      "actual": "Hello Bob and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 5,
+      "input": "Ada",
+      "expected": "Hello Ada and welcome!",
+      "actual": "Hello Ada and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 6,
+      "input": "Alice",
+      "expected": "Hello Alice and welcome!",
+      "actual": "Hello Alice and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 7,
+      "input": "Charlie",
+      "expected": "Hello Charlie and welcome!",
+      "actual": "Hello Charlie and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 8,
+      "input": " Grace ",
+      "expected": "Hello  Grace  and welcome!",
+      "actual": "Hello  Grace  and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 9,
+      "input": "Dr. Watson",
+      "expected": "Hello Dr. Watson and welcome!",
+      "actual": "Hello Dr. Watson and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 10,
+      "input": "Jane Doe",
+      "expected": "Hello Jane Doe and welcome!",
+      "actual": "Hello Jane Doe and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 11,
+      "input": "Anne-Marie",
+      "expected": "Hello Anne-Marie and welcome!",
+      "actual": "Hello Anne-Marie and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 12,
+      "input": "Jean-Luc",
+      "expected": "Hello Jean-Luc and welcome!",
+      "actual": "Hello Jean-Luc and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 13,
+      "input": "O'Connor",
+      "expected": "Hello O'Connor and welcome!",
+      "actual": "Hello O'Connor and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 14,
+      "input": "Jos\u00e9",
+      "expected": "Hello Jos\u00e9 and welcome!",
+      "actual": "Hello Jos\u00e9 and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 15,
+      "input": "M\u00fcller",
+      "expected": "Hello M\u00fcller and welcome!",
+      "actual": "Hello M\u00fcller and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 16,
+      "input": "\u00c5sa",
+      "expected": "Hello \u00c5sa and welcome!",
+      "actual": "Hello \u00c5sa and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 17,
+      "input": "Ren\u00e9e",
+      "expected": "Hello Ren\u00e9e and welcome!",
+      "actual": "Hello Ren\u00e9e and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 18,
+      "input": "S\u00f8ren",
+      "expected": "Hello S\u00f8ren and welcome!",
+      "actual": "Hello S\u00f8ren and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 19,
+      "input": "No\u00ebl",
+      "expected": "Hello No\u00ebl and welcome!",
+      "actual": "Hello No\u00ebl and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 20,
+      "input": "Li Wei",
+      "expected": "Hello Li Wei and welcome!",
+      "actual": "Hello Li Wei and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 21,
+      "input": "\u0422\u0430\u0442\u044c\u044f\u043d\u0430",
+      "expected": "Hello \u0422\u0430\u0442\u044c\u044f\u043d\u0430 and welcome!",
+      "actual": "Hello \u0422\u0430\u0442\u044c\u044f\u043d\u0430 and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 22,
+      "input": "12345",
+      "expected": "Hello 12345 and welcome!",
+      "actual": "Hello 12345 and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 23,
+      "input": "user_test",
+      "expected": "Hello user_test and welcome!",
+      "actual": "Hello user_test and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 24,
+      "input": "Alpha-Beta",
+      "expected": "Hello Alpha-Beta and welcome!",
+      "actual": "Hello Alpha-Beta and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    },
+    {
+      "test_id": 25,
+      "input": "LineEnd",
+      "expected": "Hello LineEnd and welcome!",
+      "actual": "Hello LineEnd and welcome!",
+      "passed": true,
+      "preconditions": {
+        "source_file": "basic-input-output-in-python/greeter.py",
+        "line_1": "name = input(\"Please enter your name: \")",
+        "line_2": "print(\"Hello\", name, \"and welcome!\")"
+      }
+    }
+  ]
+}

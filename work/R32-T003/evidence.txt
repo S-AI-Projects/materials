@@ -1,0 +1,27 @@
+R32-T003 Verification Summary
+==============================
+Target module: basic-input-output-in-python/greeter.py
+Precondition Line 1: name = input("Please enter your name: ")
+Precondition Line 2: print("Hello", name, "and welcome!")
+Smallest valid input: '' -> 'Hello  and welcome!'
+Ordinary input: 'Alice' -> 'Hello Alice and welcome!'
+Reference domain checks: 25 evaluated, 25 passed
+Native unit tests: 5 executed, 5 passed
+Exit status: 0
+
+Unittest Output:
+test_mocked_sys_io_legacy_execution (test_greeter.TestGreeter.test_mocked_sys_io_legacy_execution)
+Verify run_greeter with sys.stdin and sys.stdout mocked. ... ok
+test_precondition_line1_smallest_valid_input (test_greeter.TestGreeter.test_precondition_line1_smallest_valid_input)
+Smallest valid input: empty string '' (Precondition cited: line 1 & line 2). ... ok
+test_precondition_line2_ordinary_input (test_greeter.TestGreeter.test_precondition_line2_ordinary_input)
+Ordinary input: 'Alice' (Precondition cited: line 1 & line 2). ... ok
+test_run_greeter_io_ordinary_input (test_greeter.TestGreeter.test_run_greeter_io_ordinary_input)
+Verify run_greeter with ordinary input 'Alice' through mocked streams. ... ok
+test_run_greeter_io_smallest_input (test_greeter.TestGreeter.test_run_greeter_io_smallest_input)
+Verify run_greeter with smallest valid input '' through mocked streams. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
