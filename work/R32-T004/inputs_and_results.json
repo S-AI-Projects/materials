@@ -1,0 +1,15 @@
+{
+  "fixture_names": [
+    "Athens",
+    "Berlin",
+    "Cairo",
+    "Dublin"
+  ],
+  "property_cases_count": 100,
+  "property_seed": 42,
+  "deliberate_violations_detected": true,
+  "smallest_fifo_failure": "Expected [City(name='Athens', country='Greece', year=-800, latitude=37.98, longitude=23.72), City(name='Berlin', country='Germany', year=1237, latitude=52.52, longitude=13.4), City(name='Cairo', country='Egypt', year=969, latitude=30.04, longitude=31.23), City(name='Dublin', country='Ireland', year=841, latitude=53.34, longitude=-6.26)], got [City(name='Cairo', country='Egypt', year=969, latitude=30.04, longitude=31.23), City(name='Berlin', country='Germany', year=1237, latitude=52.52, longitude=13.4), City(name='Dublin', country='Ireland', year=841, latitude=53.34, longitude=-6.26), City(name='Athens', country='Greece', year=-800, latitude=37.98, longitude=23.72)]",
+  "smallest_size_failure": "Expected size 1, got 2",
+  "native_tests_count": 5,
+  "all_checks_passed": true
+}
