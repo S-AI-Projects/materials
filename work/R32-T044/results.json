@@ -1,0 +1,93 @@
+{
+  "task_id": "R32-T044",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python315-sampling-profiler/test_make_assets.py",
+    "test_count": 6,
+    "status": "PASSED",
+    "stderr": "......\n----------------------------------------------------------------------\nRan 6 tests in 2.796s\n\nOK\n"
+  },
+  "invariant_property_checks": [
+    {
+      "case": "smallest_valid_input_zero_blend",
+      "source_anchor": "make_assets.py:line 132",
+      "input": {
+        "low": [
+          0,
+          0,
+          0
+        ],
+        "high": [
+          0,
+          0,
+          0
+        ],
+        "amount": 0.0
+      },
+      "expected": [
+        0,
+        0,
+        0
+      ],
+      "actual": [
+        0,
+        0,
+        0
+      ],
+      "status": "PASS"
+    },
+    {
+      "case": "ordinary_fixture_input_dawn_midpoint",
+      "source_anchor": "make_assets.py:lines 25, 54-58, 132",
+      "input": {
+        "low": [
+          252,
+          210,
+          153
+        ],
+        "high": [
+          146,
+          90,
+          118
+        ],
+        "amount": 0.5
+      },
+      "expected": [
+        199,
+        150,
+        136
+      ],
+      "actual": [
+        199,
+        150,
+        136
+      ],
+      "status": "PASS"
+    },
+    {
+      "case": "100_bounded_property_cases",
+      "seed": 42,
+      "count": 100,
+      "status": "PASS"
+    },
+    {
+      "case": "mesh_geometry_invariant",
+      "source_anchor": "make_assets.py:line 84",
+      "expected_vertices": 3840,
+      "actual_vertices": 3840,
+      "expected_faces": 7680,
+      "actual_faces": 7680,
+      "status": "PASS"
+    }
+  ],
+  "mutation_verification": {
+    "mutant_type": "channel_overflow_deliberate_defect",
+    "rejected": true,
+    "status": "PASSED"
+  },
+  "overall_status": "PASSED"
+}

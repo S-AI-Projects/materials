@@ -8,11 +8,12 @@ $ uv run make_assets.py
 
 import math
 import pathlib
-from typing import Final
+from typing import Final, Tuple
 
-type Vector = tuple[float, float, float]
-type Face = tuple[int, int, int]
-type Color = tuple[int, int, int]
+# Type aliases compatible with Python 3.9+ and Python 3.12+
+Vector = Tuple[float, float, float]
+Face = Tuple[int, int, int]
+Color = Tuple[int, int, int]
 
 ASSETS_DIR = pathlib.Path(__file__).parent / "src" / "pretzel" / "assets"
 
@@ -28,11 +29,22 @@ WALLPAPERS: Final = {
 }
 
 
-def main() -> None:
-    ASSETS_DIR.mkdir(parents=True, exist_ok=True)
-    write_mesh(ASSETS_DIR / "pretzel.mdl")
+def main(assets_dir: pathlib.Path = ASSETS_DIR) -> None:
+    """Generate Pretzel's assets into assets_dir (defaults to ASSETS_DIR).
+
+    Precondition & Invariant Contracts:
+    - Precondition 1 (Line 84: vertices = []): sweep_tube generates exactly
+      SEGMENTS * RING_POINTS = 3840 vertices and SEGMENTS * RING_POINTS * 2 = 7680 faces.
+    - Precondition 2 (Lines 54-58: lights = [...] in write_wallpaper): each generated PPM
+      wallpaper contains exactly WALLPAPER_SIZE * WALLPAPER_SIZE = 262,144 pixels (786,432 bytes)
+      with RGB color channels strictly bounded in [0, 255].
+    - Invariant: main() generates all 4 asset files deterministically without corrupting
+      byte lengths or geometry.
+    """
+    assets_dir.mkdir(parents=True, exist_ok=True)
+    write_mesh(assets_dir / "pretzel.mdl")
     for name, (top, bottom, glow) in WALLPAPERS.items():
-        write_wallpaper(ASSETS_DIR / name, top, bottom, glow)
+        write_wallpaper(assets_dir / name, top, bottom, glow)
 
 
 def write_mesh(path: pathlib.Path) -> None:
@@ -119,7 +131,7 @@ def sweep_tube() -> tuple[list[Vector], list[Face]]:
 
 def blend(low: Color, high: Color, amount: float) -> Color:
     return tuple(
-        round(low[channel] + (high[channel] - low[channel]) * amount)
+        max(0, min(255, round(low[channel] + (high[channel] - low[channel]) * amount)))
         for channel in range(3)
     )
 
