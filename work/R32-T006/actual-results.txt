@@ -1,0 +1,4 @@
+1. Smallest actual: return='', stdout='\n'
+2. Ordinary actual: return='ordinary', stdout='ordinary\n'
+3. Default actual: return='global', stdout='global\n'
+Native unit tests passed: 4/4

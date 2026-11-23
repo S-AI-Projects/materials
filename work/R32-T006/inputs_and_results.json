@@ -1,0 +1,16 @@
+{
+  "smallest_result": {
+    "return": "",
+    "stdout": "\n"
+  },
+  "ordinary_result": {
+    "return": "ordinary",
+    "stdout": "ordinary\n"
+  },
+  "default_result": {
+    "return": "global",
+    "stdout": "global\n"
+  },
+  "native_tests_count": 4,
+  "all_passed": true
+}

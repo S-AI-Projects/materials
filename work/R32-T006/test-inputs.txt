@@ -1,0 +1,3 @@
+1. Smallest input: val=''
+2. Ordinary input: val='ordinary'
+3. Default input: val=None (falls back to global x)
