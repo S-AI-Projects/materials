@@ -1,0 +1,51 @@
+{
+  "smallest_result": [
+    80.0
+  ],
+  "ordinary_result": [
+    91.25,
+    54.25,
+    83.25,
+    100.0,
+    70.25,
+    100.0,
+    93.25,
+    31.25
+  ],
+  "benchmark_records": {
+    "N_100": {
+      "size": 100,
+      "repetitions": 5,
+      "median_ns": 6625,
+      "min_ns": 5541,
+      "max_ns": 7917,
+      "range_ns": 2376,
+      "median_ms": 0.006625,
+      "operations_count": 300
+    },
+    "N_1000": {
+      "size": 1000,
+      "repetitions": 5,
+      "median_ns": 50875,
+      "min_ns": 49500,
+      "max_ns": 54667,
+      "range_ns": 5167,
+      "median_ms": 0.050875,
+      "operations_count": 3000
+    },
+    "N_10000": {
+      "size": 10000,
+      "repetitions": 5,
+      "median_ns": 479834,
+      "min_ns": 467875,
+      "max_ns": 483166,
+      "range_ns": 15291,
+      "median_ms": 0.479834,
+      "operations_count": 30000
+    }
+  },
+  "theoretical_complexity": "O(N)",
+  "input_variable": "N (number of grade elements)",
+  "native_tests_count": 4,
+  "all_passed": true
+}

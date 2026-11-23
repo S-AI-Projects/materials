@@ -19,3 +19,11 @@ $ jupyter notebook
 ```
 
 You should see listings for each of the example files.  You can open them up and run them cell by cell to see how they perform.  Feel free to make small changes to the code to see how those affect things.
+
+## Complexity and Performance Analysis
+
+### Grade Curving Algorithm (`curve_grades`)
+- **Input size variable ($N$)**: Total number of grade elements in the dataset.
+- **Theoretical Time Complexity**: $\mathcal{O}(N)$ worst-case and average-case. The calculation computes the mean with one pass over the array ($\mathcal{O}(N)$), adds a scalar offset to all elements ($\mathcal{O}(N)$), and clips the bounded result ($\mathcal{O}(N)$).
+- **Theoretical Space Complexity**: $\mathcal{O}(N)$ auxiliary space for returning the new adjusted array.
+- **Empirical Observations**: Verified with fixed pseudo-random seeds across sizes $N=100$, $N=1000$, and $N=10000$ (5 repetitions each, reporting median and range). Operation counts scale strictly linearly with $N$ ($\mathcal{O}(N)$).
