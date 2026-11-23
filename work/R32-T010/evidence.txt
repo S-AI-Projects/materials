@@ -1,0 +1,22 @@
+R32-T010 Verification Summary
+==============================
+Target: python-dict-attribute/demo.py (DemoClass)
+Protected condition: class_attr must remain strictly in class dict and never leak into instance dict
+Mutant detection: Assertion failed: class_attr found in instance __dict__
+Native unit tests: 4 executed, 4 passed
+Exit status: 0
+
+Unittest Output:
+test_method_callable_and_unmutated (test_demo.TestDemoClass.test_method_callable_and_unmutated)
+Line 7: method returns expected method string and remains unmutated. ... ok
+test_precondition_line1_and_line2_class_attribute_isolation (test_demo.TestDemoClass.test_precondition_line1_and_line2_class_attribute_isolation)
+Line 2: class_attr must belong to DemoClass.__dict__ and not instance __dict__. ... ok
+test_precondition_ordinary_input (test_demo.TestDemoClass.test_precondition_ordinary_input)
+Ordinary input fixture: DemoClass() with default value. ... ok
+test_precondition_smallest_valid_input (test_demo.TestDemoClass.test_precondition_smallest_valid_input)
+Smallest valid input fixture: DemoClass(value="") with empty string. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

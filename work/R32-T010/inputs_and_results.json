@@ -1,0 +1,12 @@
+{
+  "smallest_dict": {
+    "instance_attr": ""
+  },
+  "ordinary_dict": {
+    "instance_attr": "This is an instance attribute"
+  },
+  "mutant_detected": true,
+  "mutation_error": "Assertion failed: class_attr found in instance __dict__",
+  "native_tests_count": 4,
+  "all_passed": true
+}
