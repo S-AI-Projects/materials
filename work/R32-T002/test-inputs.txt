@@ -1,0 +1,16 @@
+# Precondition Anchors:
+Line 9: sales = pd.read_csv(PROJECT_ROOT / 'data/sales_clean.csv', parse_dates=['order_date'])
+Line 15: sales[['quantity', 'unit_price', 'sale_price']].describe().round(2)
+Line 16: sales['order_type'].value_counts()
+Line 19-20: sales.groupby(['product_category', 'order_type'], as_index=False)
+Line 23: orders=('order_number', 'size')
+Line 24: median_order_value=('sale_price', 'median')
+Line 30-34: order_summary.pivot(index='product_category', columns='order_type', values='median_order_value')
+Line 36-40: chart_data.plot.bar(rot=0, figsize=(8, 4))
+
+# Boundary Test Matrix Cases:
+[smallest_valid_input] Precondition: analyze_sales.py:19-24,30-34 | Input: {'order_number': [1001], 'order_date': ['2019-02-09'], 'order_type': ['Retail'], 'product_category': ['Olive Oil'], 'quantity': [1], 'unit_price': [45.0], 'sale_price': [45.0]}
+[ordinary_input] Precondition: analyze_sales.py:19-24,30-34 | Input: {'order_number': [1001, 1002, 1003], 'order_date': ['2019-02-09', '2019-02-15', '2019-02-16'], 'order_type': ['Retail', 'Retail', 'Wholesale'], 'product_category': ['Olive Oil', 'Olive Oil', 'Bath products'], 'quantity': [2, 1, 4], 'unit_price': [45.0, 19.5, 26.0], 'sale_price': [90.0, 19.5, 104.0]}
+[empty_boundary_input] Precondition: analyze_sales.py:19-24,30-34 | Input: {'order_number': [], 'order_date': [], 'order_type': [], 'product_category': [], 'quantity': [], 'unit_price': [], 'sale_price': []}
+[unsupported_none_input] Precondition: analyze_sales.py:15-24 | Input: None
+[unsupported_missing_column] Precondition: analyze_sales.py:15-24 | Input: {'order_number': [1]}

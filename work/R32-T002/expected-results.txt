@@ -1,0 +1,6 @@
+# Expected Results:
+[smallest_valid_input] Expected: {"orders": 1, "median_order_value": 45.0, "product_category": "Olive Oil", "order_type": "Retail", "chart_value": 45.0}
+[ordinary_input] Expected: {"olive_oil_retail_orders": 2, "olive_oil_retail_median": 54.75, "bath_wholesale_orders": 1, "bath_wholesale_median": 104.0}
+[empty_boundary_input] Expected: {"summary_empty": true, "chart_empty": true}
+[unsupported_none_input] Expected: "ValueError: Sales data cannot be None"
+[unsupported_missing_column] Expected: "ValueError: Missing required columns in sales data: ['order_date', 'order_type', 'product_category', 'quantity', 'sale_price', 'unit_price']"
