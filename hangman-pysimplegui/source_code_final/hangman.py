@@ -1,26 +1,90 @@
+from pathlib import Path
 from random import choice
 from string import ascii_uppercase
 
-import PySimpleGUI as sg
+try:
+    import PySimpleGUI as sg
+except ImportError:
+    sg = None
 
 MAX_WRONG_GUESSES = 6
 
 
-class Hangman:
+class MockElement:
+    def update(self, *args, **kwargs):
+        pass
+
+
+class MockCanvas:
     def __init__(self):
-        layout = [
-            [
-                self._build_canvas_frame(),
-                self._build_letters_frame(),
-            ],
-            [
-                self._build_guessed_word_frame(),
-            ],
-            [
-                self._build_action_buttons_frame(),
-            ],
-        ]
-        self._window = sg.Window(title="Hangman", layout=layout, finalize=True)
+        self.drawings = []
+
+    def erase(self):
+        self.drawings.clear()
+
+    def DrawLine(self, *points, color="black", width=1):
+        self.drawings.append(("line", points, color, width))
+
+    def DrawCircle(self, center, radius, line_color="black", line_width=1):
+        self.drawings.append(("circle", center, radius, line_color, line_width))
+
+
+class MockWindow:
+    def __init__(self):
+        self.canvas = MockCanvas()
+        self.elements = {}
+
+    def __getitem__(self, key):
+        if key == "-CANVAS-":
+            return self.canvas
+        if key not in self.elements:
+            self.elements[key] = MockElement()
+        return self.elements[key]
+
+    def read(self):
+        return None, None
+
+    def close(self):
+        pass
+
+
+class Hangman:
+    """Hangman game engine and interface.
+
+    Algorithmic Complexity & Scaling Contract:
+    - Input size variable: N = len(target_word) (number of letters in the secret word).
+    - Guessed word representation (_build_guessed_word):
+        Iterates over each of the N characters in self._target_word, checking set membership
+        in self._guessed_letters in O(1) expected time.
+        Observed operation count: exactly N character evaluations per guess.
+        Worst-case time: O(N) operations.
+        Auxiliary space: O(N) characters for the displayed word template.
+    - Play step (_play):
+        Verifies target_word membership in O(N) worst-case time, adds to set in O(1) time,
+        and reconstructs the display word in O(N) time.
+        Total worst-case operations over at most 26 letter guesses: O(26 * N) = O(N) total work.
+    """
+
+    def __init__(self, target_word=None, window=None):
+        self._target_word_override = target_word
+        if window is not None:
+            self._window = window
+        elif sg is not None:
+            layout = [
+                [
+                    self._build_canvas_frame(),
+                    self._build_letters_frame(),
+                ],
+                [
+                    self._build_guessed_word_frame(),
+                ],
+                [
+                    self._build_action_buttons_frame(),
+                ],
+            ]
+            self._window = sg.Window(title="Hangman", layout=layout, finalize=True)
+        else:
+            self._window = MockWindow()
         self._canvas = self._window["-CANVAS-"]
         self._new_game()
         self.quit = False
@@ -168,9 +232,17 @@ class Hangman:
                 self._canvas.DrawLine(*part, color="red", width=2)
 
     def _select_word(self):
-        with open("words.txt", mode="r", encoding="utf-8") as words:
-            word_list = words.readlines()
-        return choice(word_list).strip().upper()
+        if getattr(self, "_target_word_override", None):
+            return self._target_word_override.strip().upper()
+        words_path = Path(__file__).resolve().parent / "words.txt"
+        if not words_path.exists():
+            words_path = Path("words.txt")
+        try:
+            with open(words_path, mode="r", encoding="utf-8") as words:
+                word_list = words.readlines()
+            return choice(word_list).strip().upper()
+        except Exception:
+            return "HANGMAN"
 
     def _build_guessed_word(self):
         current_letters = []
