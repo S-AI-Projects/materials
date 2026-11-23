@@ -1,0 +1,50 @@
+{
+  "task_id": "R32-T045",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest consuming-apis-python/test_github.py",
+    "test_count": 4,
+    "status": "PASSED",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "repeatability_checks": [
+    {
+      "name": "smallest_valid_input",
+      "precondition_source": "github.py:lines 19-24",
+      "input": {
+        "client_id": "",
+        "redirect_uri": "",
+        "scope": "",
+        "response_type": ""
+      },
+      "expected": "https://github.com/login/oauth/authorize?client_id=&redirect_uri=&scope=&response_type=",
+      "actual": "https://github.com/login/oauth/authorize?client_id=&redirect_uri=&scope=&response_type=",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_fixture_input",
+      "precondition_source": "github.py:lines 19-24, line 51",
+      "input": {
+        "client_id": "test-client-987",
+        "redirect_uri": "https://myapp.local/oauth/callback"
+      },
+      "expected": "https://github.com/login/oauth/authorize?client_id=test-client-987&redirect_uri=https%3A%2F%2Fmyapp.local%2Foauth%2Fcallback&scope=user&response_type=code",
+      "actual": "https://github.com/login/oauth/authorize?client_id=test-client-987&redirect_uri=https%3A%2F%2Fmyapp.local%2Foauth%2Fcallback&scope=user&response_type=code",
+      "status": "PASS"
+    },
+    {
+      "name": "repeatability_and_input_isolation",
+      "precondition_source": "github.py:lines 18-36",
+      "run1_isolated": "https://github.com/login/oauth/authorize?client_id=repeat-id&redirect_uri=https%3A%2F%2Fcallback.io&scope=user&response_type=code",
+      "run2_after_divergent": "https://github.com/login/oauth/authorize?client_id=repeat-id&redirect_uri=https%3A%2F%2Fcallback.io&scope=user&response_type=code",
+      "run3_fresh_session": "https://github.com/login/oauth/authorize?client_id=repeat-id&redirect_uri=https%3A%2F%2Fcallback.io&scope=user&response_type=code",
+      "repeatable": true,
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASSED"
+}
