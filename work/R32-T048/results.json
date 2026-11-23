@@ -1,0 +1,62 @@
+{
+  "task_id": "R32-T048",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest pandas-iterate-over-rows/test_products.py",
+    "test_count": 4,
+    "status": "PASSED",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "failure_path_checks": [
+    {
+      "name": "smallest_valid_input_empty_result_branch",
+      "precondition_source": "products.py:line 7 (cumulative_sum = []), line 9 (loop)",
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_fixture_input",
+      "precondition_source": "products.py:lines 7, 9, 10-14",
+      "input_count": 5,
+      "expected": [
+        1.5,
+        2.56,
+        5.31,
+        12.41,
+        17.69
+      ],
+      "actual": [
+        1.5,
+        2.56,
+        5.31,
+        12.41,
+        17.69
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "failure_path_missing_attribute",
+      "precondition_source": "products.py:line 10",
+      "expected_exception": "AttributeError",
+      "triggered": true,
+      "status": "PASS"
+    },
+    {
+      "name": "recovery_call_after_failure",
+      "expected": [
+        10.0
+      ],
+      "actual": [
+        10.0
+      ],
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASSED"
+}
