@@ -10,11 +10,21 @@ SNAKE = r"""  \
 
 
 def bubble(message):
-    bubble_length = len(message) + 2
+    """Format message inside a snake speech bubble.
+
+    Preconditions & Boundaries:
+    - Line 13: bubble_length = len(message) + 2 (1 space of padding on each side of message).
+    - Lines 14-17: Bubble layout composed of top border ('_'), enclosed message line,
+      and bottom border ('‾').
+    """
+    padding = 2
+    border_width = len(message) + padding
+    top_border = "_" * border_width
+    bottom_border = "‾" * border_width
     return f"""
- {"_" * bubble_length}
+ {top_border}
 ( {message} )    
- {"‾" * bubble_length}"""
+ {bottom_border}"""
 
 
 def say(message):

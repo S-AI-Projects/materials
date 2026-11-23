@@ -1,0 +1,43 @@
+{
+  "task_id": "R32-T046",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python-pyproject-toml/snakesay-project/test_snake.py",
+    "test_count": 4,
+    "status": "PASSED",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "fixture_checks": [
+    {
+      "name": "smallest_valid_input",
+      "precondition_source": "snake.py:lines 12-17",
+      "input": {
+        "message": ""
+      },
+      "expected": "\n __\n(  )    \n \u203e\u203e",
+      "actual": "\n __\n(  )    \n \u203e\u203e",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_fixture_input",
+      "precondition_source": "snake.py:lines 12-17",
+      "input": {
+        "message": "Hello, World!"
+      },
+      "expected": "\n _______________\n( Hello, World! )    \n \u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e",
+      "actual": "\n _______________\n( Hello, World! )    \n \u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e\u203e",
+      "status": "PASS"
+    },
+    {
+      "name": "refactoring_equivalence_multi_sample",
+      "count": 4,
+      "status": "PASS"
+    }
+  ],
+  "refactored_state": "extracted border width, top border, and bottom border variables",
+  "overall_status": "PASSED"
+}
