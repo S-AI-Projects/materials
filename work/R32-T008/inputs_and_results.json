@@ -1,0 +1,17 @@
+{
+  "smallest_result": null,
+  "ordinary_result": [
+    0,
+    1,
+    0
+  ],
+  "failure_message": "Invalid semantic version string: 'alpha.beta.gamma'",
+  "subsequent_result": [
+    1,
+    2,
+    3
+  ],
+  "caller_state_preserved": true,
+  "native_tests_count": 5,
+  "all_passed": true
+}

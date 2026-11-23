@@ -1,0 +1,5 @@
+1. Smallest actual: None
+2. Ordinary actual: (0, 1, 0)
+3. Failure actual: Invalid semantic version string: 'alpha.beta.gamma'
+4. Subsequent actual: (1, 2, 3)
+Native unit tests passed: 5/5

@@ -1,0 +1,25 @@
+R32-T008 Verification Summary
+==============================
+Target: arcade-platformer/arcade_platformer/__init__.py
+Precondition: Line 1 __version__ = '0.1.0'
+Failure branch: empty-result sentinel None and ValueError on malformed format
+Caller state: confirmed unmodified and subsequent calls succeed
+Native unit tests: 5 executed, 5 passed
+Exit status: 0
+
+Unittest Output:
+test_failure_branch_and_caller_state_preservation (test_arcade_platformer.TestArcadePlatformerInit.test_failure_branch_and_caller_state_preservation)
+Assert failure branch raises intended exception, preserving caller-owned state, ... ok
+test_precondition_line1_default_version (test_arcade_platformer.TestArcadePlatformerInit.test_precondition_line1_default_version)
+Line 1: Default argument parses __version__ into (0, 1, 0). ... ok
+test_precondition_line1_ordinary_input (test_arcade_platformer.TestArcadePlatformerInit.test_precondition_line1_ordinary_input)
+Ordinary valid input: '0.1.0' -> (0, 1, 0). ... ok
+test_precondition_line1_smallest_valid_input_empty_result (test_arcade_platformer.TestArcadePlatformerInit.test_precondition_line1_smallest_valid_input_empty_result)
+Smallest valid input reaching absent-result branch: '' -> None. ... ok
+test_version_constant (test_arcade_platformer.TestArcadePlatformerInit.test_version_constant)
+Preserve existing test_version contract. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK
