@@ -1,0 +1,72 @@
+{
+  "task_id": "R32-T047",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python-statistics/test_plot_xy.py",
+    "test_count": 4,
+    "status": "PASSED",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.012s\n\nOK\n"
+  },
+  "documentation_checks": [
+    {
+      "name": "smallest_valid_input_doc_example",
+      "precondition_source": "plot_xy.py:lines 15, 18, 19",
+      "input": {
+        "x": [
+          0.0,
+          1.0
+        ],
+        "y": [
+          5.0,
+          7.0
+        ]
+      },
+      "intermediate_state": {
+        "mean_x": 0.5,
+        "mean_y": 6.0,
+        "ss_xx": 0.5,
+        "ss_xy": 1.0,
+        "decisive_transition": "OLS slope = ss_xy/ss_xx = 2.0, intercept = 5.0"
+      },
+      "expected": "Regression line: y=5.00+2.00x, r=1.00",
+      "actual": "Regression line: y=5.00+2.00x, r=1.00",
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_fixture_input",
+      "precondition_source": "plot_xy.py:lines 15, 18, 19",
+      "input": {
+        "x": [
+          0.0,
+          1.0,
+          2.0,
+          3.0,
+          4.0
+        ],
+        "y": [
+          5.1,
+          7.0,
+          8.9,
+          11.2,
+          12.8
+        ]
+      },
+      "intermediate_state": {
+        "mean_x": 2.0,
+        "mean_y": 9.0,
+        "ss_xx": 10.0,
+        "ss_xy": 19.6,
+        "slope": 1.96,
+        "intercept": 5.08
+      },
+      "expected": "Regression line: y=5.08+1.96x, r=1.00",
+      "actual": "Regression line: y=5.08+1.96x, r=1.00",
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASSED"
+}
