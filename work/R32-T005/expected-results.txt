@@ -1,0 +1,3 @@
+Smallest expected: {'bitmap': 'image.bmp', 'encode': None, 'decode': True, 'erase': False}
+Ordinary expected: {'bitmap': 'carrier.bmp', 'encode': 'secret.txt', 'decode': False, 'erase': False}
+Repeatability expected: run1 == run2 == run3

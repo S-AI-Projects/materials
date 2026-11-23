@@ -1,0 +1,16 @@
+{
+  "precondition_line": 12,
+  "smallest_input": [
+    "image.bmp",
+    "--decode"
+  ],
+  "ordinary_input": [
+    "carrier.bmp",
+    "--encode",
+    "secret.txt"
+  ],
+  "repeatable_runs_count": 3,
+  "runs_identical": true,
+  "native_tests_count": 5,
+  "all_passed": true
+}
