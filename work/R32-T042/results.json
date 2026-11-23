@@ -1,0 +1,64 @@
+{
+  "task_id": "R32-T042",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "946b15231c7e301d79b04bc41ae2359ae27c1e19"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python-circular-imports/broken/test_main.py",
+    "test_count": 7,
+    "stdout": "",
+    "stderr": ".......\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n",
+    "status": "PASSED"
+  },
+  "boundary_checks": [
+    {
+      "name": "smallest_valid_input_with_shipping",
+      "precondition_source": "main.py:Lines 3-5",
+      "input": {
+        "name": "",
+        "price": 0.0,
+        "quantity": 0,
+        "add_shipping": true
+      },
+      "expected": 4.99,
+      "actual": 4.99,
+      "status": "PASS"
+    },
+    {
+      "name": "smallest_valid_input_no_shipping",
+      "precondition_source": "main.py:Lines 3-4",
+      "input": {
+        "name": "",
+        "price": 0.0,
+        "quantity": 0,
+        "add_shipping": false
+      },
+      "expected": 0.0,
+      "actual": 0.0,
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_input",
+      "precondition_source": "main.py:Lines 3-5",
+      "input": {
+        "name": "Laptop",
+        "price": 1000.0,
+        "quantity": 1,
+        "add_shipping": true
+      },
+      "expected": 1004.99,
+      "actual": 1004.99,
+      "status": "PASS"
+    },
+    {
+      "name": "circular_import_precondition_line1",
+      "precondition_source": "main.py:Line 1",
+      "input": "from shop.product import Product",
+      "expected": "ImportError: cannot import name 'Product' from partially initialized module 'shop.product'",
+      "actual": "ImportError: cannot import name 'Product' from partially initialized module 'shop.product' (most likely due to a circular import) (/Users/satyamfolder/materials/python-circular-imports/broken/shop/product.py)",
+      "status": "PASS"
+    }
+  ],
+  "overall_status": "PASSED"
+}
