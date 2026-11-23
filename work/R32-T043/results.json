@@ -1,0 +1,188 @@
+{
+  "task_id": "R32-T043",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "0a19a607a6982d142ea0acfb3a4208cc266f072f"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python-formatted-output/test_format.py",
+    "test_count": 5,
+    "stdout": "",
+    "stderr": ".....\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n",
+    "status": "PASSED"
+  },
+  "oracle_comparison": {
+    "key_checks": [
+      {
+        "name": "smallest_valid_input",
+        "precondition_source": "format.py:Line 1",
+        "input": 0,
+        "expected": "0",
+        "actual": "0",
+        "status": "PASS"
+      },
+      {
+        "name": "ordinary_input",
+        "precondition_source": "format.py:Line 1",
+        "input": 257,
+        "expected": "100000001",
+        "actual": "100000001",
+        "status": "PASS"
+      }
+    ],
+    "enumerated_inputs_count": 25,
+    "domain_results": [
+      {
+        "input": 0,
+        "oracle_expected": "0",
+        "actual": "0",
+        "match": true
+      },
+      {
+        "input": 1,
+        "oracle_expected": "1",
+        "actual": "1",
+        "match": true
+      },
+      {
+        "input": 2,
+        "oracle_expected": "10",
+        "actual": "10",
+        "match": true
+      },
+      {
+        "input": 3,
+        "oracle_expected": "11",
+        "actual": "11",
+        "match": true
+      },
+      {
+        "input": 4,
+        "oracle_expected": "100",
+        "actual": "100",
+        "match": true
+      },
+      {
+        "input": 5,
+        "oracle_expected": "101",
+        "actual": "101",
+        "match": true
+      },
+      {
+        "input": 6,
+        "oracle_expected": "110",
+        "actual": "110",
+        "match": true
+      },
+      {
+        "input": 7,
+        "oracle_expected": "111",
+        "actual": "111",
+        "match": true
+      },
+      {
+        "input": 8,
+        "oracle_expected": "1000",
+        "actual": "1000",
+        "match": true
+      },
+      {
+        "input": 9,
+        "oracle_expected": "1001",
+        "actual": "1001",
+        "match": true
+      },
+      {
+        "input": 10,
+        "oracle_expected": "1010",
+        "actual": "1010",
+        "match": true
+      },
+      {
+        "input": 15,
+        "oracle_expected": "1111",
+        "actual": "1111",
+        "match": true
+      },
+      {
+        "input": 16,
+        "oracle_expected": "10000",
+        "actual": "10000",
+        "match": true
+      },
+      {
+        "input": 17,
+        "oracle_expected": "10001",
+        "actual": "10001",
+        "match": true
+      },
+      {
+        "input": 31,
+        "oracle_expected": "11111",
+        "actual": "11111",
+        "match": true
+      },
+      {
+        "input": 32,
+        "oracle_expected": "100000",
+        "actual": "100000",
+        "match": true
+      },
+      {
+        "input": 63,
+        "oracle_expected": "111111",
+        "actual": "111111",
+        "match": true
+      },
+      {
+        "input": 64,
+        "oracle_expected": "1000000",
+        "actual": "1000000",
+        "match": true
+      },
+      {
+        "input": 127,
+        "oracle_expected": "1111111",
+        "actual": "1111111",
+        "match": true
+      },
+      {
+        "input": 128,
+        "oracle_expected": "10000000",
+        "actual": "10000000",
+        "match": true
+      },
+      {
+        "input": 255,
+        "oracle_expected": "11111111",
+        "actual": "11111111",
+        "match": true
+      },
+      {
+        "input": 256,
+        "oracle_expected": "100000000",
+        "actual": "100000000",
+        "match": true
+      },
+      {
+        "input": 257,
+        "oracle_expected": "100000001",
+        "actual": "100000001",
+        "match": true
+      },
+      {
+        "input": 512,
+        "oracle_expected": "1000000000",
+        "actual": "1000000000",
+        "match": true
+      },
+      {
+        "input": 1024,
+        "oracle_expected": "10000000000",
+        "actual": "10000000000",
+        "match": true
+      }
+    ]
+  },
+  "overall_status": "PASSED"
+}
