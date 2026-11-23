@@ -1,0 +1,57 @@
+{
+  "task_id": "R32-T050",
+  "tool_versions": {
+    "python": "3.9.6 (default, Oct 19 2026, 19:18:13)  [Clang 21.0.0 (clang-2100.4.1.1)]",
+    "git_commit": "6770e8fc382d0006b3523f998d63d01fc8a947eb",
+    "platform": "darwin"
+  },
+  "preconditions": {
+    "line_64": "SKIP_DIRS = ['temp', 'temporary_files', 'logs']",
+    "line_71": "large_dir.rglob('*')",
+    "line_72": "if set(item.parts).isdisjoint(SKIP_DIRS):",
+    "line_76_82": "[item for item in large_dir.rglob('*') if set(item.parts).isdisjoint(SKIP_DIRS)]"
+  },
+  "native_check": {
+    "command": "/Library/Developer/CommandLineTools/usr/bin/python3 -m unittest python-get-all-files-in-directory/test_examples.py",
+    "test_count": 4,
+    "status": "PASSED",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.000s\n\nOK\n"
+  },
+  "fixtures": {
+    "smallest_valid_input": {
+      "input": [],
+      "expected": [],
+      "actual": [],
+      "status": "PASSED"
+    },
+    "ordinary_fixture_input": {
+      "input": [
+        "Desktop/realpython/iterate-dict.md",
+        "Desktop/temp/cache.tmp",
+        "Desktop/todo.txt",
+        "Desktop/logs/app.log",
+        "Desktop/temporary_files/scratch.txt",
+        "Desktop/scripts/rename_files.py"
+      ],
+      "expected": [
+        "Desktop/realpython/iterate-dict.md",
+        "Desktop/todo.txt",
+        "Desktop/scripts/rename_files.py"
+      ],
+      "actual": [
+        "Desktop/realpython/iterate-dict.md",
+        "Desktop/todo.txt",
+        "Desktop/scripts/rename_files.py"
+      ],
+      "status": "PASSED"
+    }
+  },
+  "mutation_testing": {
+    "mutated_line_original": "return [item for item in paths if set(item.parts).isdisjoint(skip_set)]",
+    "mutated_line_mutant": "return [item for item in paths if item.name not in skip_set]",
+    "semantic_reason": "The mutant checks `item.name not in skip_set`, which only inspects the leaf file name (e.g. 'cache.tmp'). It fails to inspect intermediate directory components (e.g. 'Desktop/temp/cache.tmp'), erroneously including files located inside junk directories. The original implementation checks `set(item.parts).isdisjoint(skip_set)`, ensuring all path components are validated.",
+    "mutant_test_status": "FAILED (as expected)",
+    "mutant_stderr": "FFF.\n======================================================================\nFAIL: test_invariants_preserved (test_examples.TestGetAllFilesInDirectory)\nVerify output type, shape, ordering, and input immutability invariants.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/zx/fyk_v5fn1s15f6n959_pnr2r0000gn/T/tmpon7maihf/test_examples.py\", line 83, in test_invariants_preserved\n    self.assertEqual(len(result), 2)\nAssertionError: 3 != 2\n\n======================================================================\nFAIL: test_nested_junk_directory_rejection (test_examples.TestGetAllFilesInDirectory)\nSpecifically assert that deeply nested files inside junk directories are excluded.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/zx/fyk_v5fn1s15f6n959_pnr2r0000gn/T/tmpon7maihf/test_examples.py\", line 103, in test_nested_junk_directory_rejection\n    self.assertEqual(result, [])\nAssertionError: Lists differ: [PosixPath('nested/dir/temp/subfile.txt')] != []\n\nFirst list contains 1 additional elements.\nFirst extra element 0:\nPosixPath('nested/dir/temp/subfile.txt')\n\n- [PosixPath('nested/dir/temp/subfile.txt')]\n+ []\n\n======================================================================\nFAIL: test_ordinary_fixture_input (test_examples.TestGetAllFilesInDirectory)\nOrdinary fixture input exercising both allowed paths and nested skip_dirs exclusions.\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/private/var/folders/zx/fyk_v5fn1s15f6n959_pnr2r0000gn/T/tmpon7maihf/test_examples.py\", line 66, in test_ordinary_fixture_input\n    self.assertEqual(actual_output, expected_output)\nAssertionError: Lists differ: [Posi[60 chars]top/temp/cache.tmp'), PosixPath('Desktop/todo.[132 chars]py')] != [Posi[60 chars]top/todo.txt'), PosixPath('Desktop/scripts/rename_files.py')]\n\nFirst differing element 1:\nPosixPath('Desktop/temp/cache.tmp')\nPosixPath('Desktop/todo.txt')\n\nFirst list contains 3 additional elements.\nFirst extra element 3:\nPosixPath('Desktop/logs/app.log')\n\n  [PosixPath('Desktop/realpython/iterate-dict.md'),\n-  PosixPath('Desktop/temp/cache.tmp'),\n   PosixPath('Desktop/todo.txt'),\n-  PosixPath('Desktop/logs/app.log'),\n-  PosixPath('Desktop/temporary_files/scratch.txt'),\n   PosixPath('Desktop/scripts/rename_files.py')]\n\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nFAILED (failures=3)\n"
+  },
+  "overall_status": "PASSED"
+}
