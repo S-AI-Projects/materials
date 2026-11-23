@@ -1,0 +1,4 @@
+Smallest valid input: ['image.bmp', '--decode']
+Ordinary input: ['carrier.bmp', '--encode', 'secret.txt']
+Intervening input: ['target.bmp', '--erase']
+Execution order: Smallest -> Ordinary -> Smallest -> Erase -> Smallest

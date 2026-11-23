@@ -1,0 +1,26 @@
+R32-T005 Verification Summary
+==============================
+Target: python-bitwise-operators/src/stegano/cli.py (CommandLineArguments)
+Precondition: Line 12 CommandLineArguments dataclass
+Smallest fixture: ['image.bmp', '--decode'] -> CommandLineArguments(bitmap=PosixPath('image.bmp'), encode=None, decode=True, erase=False)
+Ordinary fixture: ['carrier.bmp', '--encode', 'secret.txt'] -> CommandLineArguments(bitmap=PosixPath('carrier.bmp'), encode=PosixPath('secret.txt'), decode=False, erase=False)
+Isolation check: Run 1 == Run 2 == Run 3 verified across intervening mutations
+Native unit tests: 5 executed, 5 passed
+Exit status: 0
+
+Unittest Output:
+test_error_when_no_mode_specified (test_cli.TestCommandLineArguments.test_error_when_no_mode_specified)
+Verify argument parsing error when mode is missing. ... ok
+test_precondition_line12_ordinary_input (test_cli.TestCommandLineArguments.test_precondition_line12_ordinary_input)
+Line 12: Ordinary input fixture: Encode flag with carrier and payload file. ... ok
+test_precondition_line12_smallest_valid_input (test_cli.TestCommandLineArguments.test_precondition_line12_smallest_valid_input)
+Line 12: Smallest valid input fixture: Decode flag with a single bitmap path. ... ok
+test_repeatability_and_state_isolation (test_cli.TestCommandLineArguments.test_repeatability_and_state_isolation)
+Step 3: Run the same fixture twice in fresh isolated state and once after another valid input. ... ok
+test_sys_argv_fallback_preserves_callers (test_cli.TestCommandLineArguments.test_sys_argv_fallback_preserves_callers)
+Verify default parameters preserve callers reading sys.argv. ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.001s
+
+OK

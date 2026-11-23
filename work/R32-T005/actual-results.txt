@@ -1,0 +1,6 @@
+Run 1: CommandLineArguments(bitmap=PosixPath('image.bmp'), encode=None, decode=True, erase=False)
+Intervening: CommandLineArguments(bitmap=PosixPath('carrier.bmp'), encode=PosixPath('secret.txt'), decode=False, erase=False)
+Run 2: CommandLineArguments(bitmap=PosixPath('image.bmp'), encode=None, decode=True, erase=False)
+Run 3: CommandLineArguments(bitmap=PosixPath('image.bmp'), encode=None, decode=True, erase=False)
+All repeat runs identical: True
+Native unit tests passed: 5/5
