@@ -1,0 +1,82 @@
+{
+  "source_module": "python-all-attribute/vehicles.py",
+  "target_class": "Car",
+  "fixture_anchors": {
+    "vehicles.py:1": "__all__ = [\"Car\", \"Truck\"]",
+    "vehicles.py:4": "class Car:",
+    "vehicles.py:5-6": "def start(self): print(\"The car is starting\")",
+    "vehicles.py:8-9": "def drive(self): print(\"The car is driving\")",
+    "vehicles.py:11-12": "def stop(self): print(\"The car is stopping\")"
+  },
+  "cases": [
+    {
+      "name": "smallest_valid_input",
+      "precondition_line": "vehicles.py:4",
+      "literal_input": "Car() with args=(), kwargs={}",
+      "expected": {
+        "isinstance": "vehicles.Car",
+        "type": "vehicles.Car",
+        "instance_dict": {}
+      },
+      "status": "verified"
+    },
+    {
+      "name": "ordinary_input_rejection",
+      "precondition_line": "vehicles.py:4",
+      "literal_input": "Car(\"Tesla\", \"Model 3\")",
+      "expected": {
+        "exception": "TypeError",
+        "reason": "object.__init__() takes exactly one argument (the instance)"
+      },
+      "status": "verified"
+    },
+    {
+      "name": "car_start_behavior",
+      "precondition_line": "vehicles.py:5-6",
+      "literal_input": "car.start()",
+      "expected": {
+        "return_value": null,
+        "mutation": {},
+        "stdout": "The car is starting\n"
+      },
+      "status": "verified"
+    },
+    {
+      "name": "car_drive_behavior",
+      "precondition_line": "vehicles.py:8-9",
+      "literal_input": "car.drive()",
+      "expected": {
+        "return_value": null,
+        "mutation": {},
+        "stdout": "The car is driving\n"
+      },
+      "status": "verified"
+    },
+    {
+      "name": "car_stop_behavior",
+      "precondition_line": "vehicles.py:11-12",
+      "literal_input": "car.stop()",
+      "expected": {
+        "return_value": null,
+        "mutation": {},
+        "stdout": "The car is stopping\n"
+      },
+      "status": "verified"
+    },
+    {
+      "name": "repeated_value_boundary",
+      "precondition_line": "vehicles.py:8-9",
+      "literal_input": "car.drive() executed 3 times repeatedly",
+      "expected": {
+        "return_values": [
+          null,
+          null,
+          null
+        ],
+        "stdout": "The car is driving\n (x3)",
+        "mutation": "none (car.__dict__ == {})"
+      },
+      "status": "verified"
+    }
+  ]
+}
