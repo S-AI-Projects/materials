@@ -1,0 +1,4 @@
+1. Smallest actual: content='', saved_path=None
+2. Ordinary actual: content='Hello, World', saved_path='basic_qrcode.png'
+3. Displayed example actual: 'QR Code created with content: Hello, World'
+Native unit tests passed: 3/3

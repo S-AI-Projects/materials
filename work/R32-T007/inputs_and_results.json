@@ -1,0 +1,8 @@
+{
+  "smallest_content": "",
+  "ordinary_content": "Hello, World",
+  "displayed_output": "QR Code created with content: Hello, World",
+  "displayed_matched": true,
+  "native_tests_count": 3,
+  "all_passed": true
+}

@@ -1,0 +1,3 @@
+1. Smallest expected: content='', saved_path=None
+2. Ordinary expected: content='Hello, World', saved_path='basic_qrcode.png'
+3. Displayed example expected: 'QR Code created with content: Hello, World'
