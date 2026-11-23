@@ -1,0 +1,4 @@
+1. Smallest actual: {'instance_attr': ''}
+2. Ordinary actual: {'instance_attr': 'This is an instance attribute'}
+3. Mutant failure detected: Assertion failed: class_attr found in instance __dict__
+Native unit tests passed: 4/4
