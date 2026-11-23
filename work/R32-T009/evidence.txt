@@ -1,0 +1,26 @@
+R32-T009 Verification Summary
+==============================
+Target: numpy-tutorial/README.md (curve_grades complexity)
+Input size variable: N = number of elements
+Theoretical claim: O(N) linear time and space complexity
+Benchmark measurements:
+ - N_100: size=100, median=6625 ns, range=2376 ns
+ - N_1000: size=1000, median=50875 ns, range=5167 ns
+ - N_10000: size=10000, median=479834 ns, range=15291 ns
+Native unit tests: 4 executed, 4 passed
+Exit status: 0
+
+Unittest Output:
+test_cap_at_100 (test_curve_grades.TestCurveGrades.test_cap_at_100)
+Invariant: No grade exceeds 100%. ... ok
+test_empty_input (test_curve_grades.TestCurveGrades.test_empty_input)
+Boundary input: empty list returns empty list. ... ok
+test_precondition_ordinary_input (test_curve_grades.TestCurveGrades.test_precondition_ordinary_input)
+Ordinary input fixture matching curve_grades.ipynb cell 4. ... ok
+test_precondition_smallest_valid_input (test_curve_grades.TestCurveGrades.test_precondition_smallest_valid_input)
+Smallest valid input fixture: single element grade [70.0]. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK

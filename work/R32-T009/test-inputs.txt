@@ -1,0 +1,3 @@
+1. Smallest valid input: [70.0]
+2. Ordinary input: [72, 35, 64, 88, 51, 90, 74, 12]
+3. Complexity test sizes: N in [100, 1000, 10000], 5 repetitions each.
