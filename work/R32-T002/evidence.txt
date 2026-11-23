@@ -1,0 +1,30 @@
+=== Task R32-T002 Verification Evidence ===
+Target: positron-ide/src/analyze_sales.py (Supported Boundaries)
+Command: /Users/naitik2801/study matter/snai hw/task 2/.venv/bin/python3 work/R32-T002/check.py
+Total Native Unit Tests: 8
+Boundary Cases Verified: 5
+
+=== Native Unit Test Log ===
+test_ordinary_valid_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_ordinary_valid_input)
+Ordinary input: multi-row dataset with mixed categories and order types. ... ok
+test_plot_sales_chart_mocked (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_plot_sales_chart_mocked)
+Verify plotting behavior with external I/O (matplotlib) mocked. ... ok
+test_precondition_anchors_and_schema (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_precondition_anchors_and_schema)
+Precondition established at Lines 15-24: required columns for sales analysis. ... ok
+test_smallest_valid_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_smallest_valid_input)
+Smallest valid input: single-row sales dataset (length 1). ... ok
+test_unsupported_data_type (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_data_type)
+Unsupported input: non-DataFrame non-dict type raises ValueError. ... ok
+test_unsupported_missing_required_column (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_missing_required_column)
+Unsupported input: missing 'sale_price' column raises ValueError. ... ok
+test_unsupported_none_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_none_input)
+Unsupported input: None raises ValueError. ... ok
+test_valid_boundary_empty_dataset (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_valid_boundary_empty_dataset)
+Valid boundary: empty dataset (0 rows) with required columns. ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.157s
+
+OK
+
+Result: SUCCESS (Exit Code 0)

@@ -1,0 +1,6 @@
+# Actual Results:
+[smallest_valid_input] Actual: {"orders": 1, "median_order_value": 45.0, "product_category": "Olive Oil", "order_type": "Retail", "chart_value": 45.0} | Status: PASS
+[ordinary_input] Actual: {"olive_oil_retail_orders": 2, "olive_oil_retail_median": 54.75, "bath_wholesale_orders": 1, "bath_wholesale_median": 104.0} | Status: PASS
+[empty_boundary_input] Actual: {"summary_empty": true, "chart_empty": true} | Status: PASS
+[unsupported_none_input] Actual: "ValueError: Sales data cannot be None" | Status: PASS
+[unsupported_missing_column] Actual: "ValueError: Missing required columns in sales data: ['order_date', 'order_type', 'product_category', 'quantity', 'sale_price', 'unit_price']" | Status: PASS

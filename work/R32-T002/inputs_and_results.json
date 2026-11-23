@@ -1,0 +1,162 @@
+{
+  "task_id": "R32-T002",
+  "target": "positron-ide/src/analyze_sales.py",
+  "contract_anchors": {
+    "Line 9": "sales = pd.read_csv(PROJECT_ROOT / 'data/sales_clean.csv', parse_dates=['order_date'])",
+    "Line 15": "sales[['quantity', 'unit_price', 'sale_price']].describe().round(2)",
+    "Line 16": "sales['order_type'].value_counts()",
+    "Line 19-20": "sales.groupby(['product_category', 'order_type'], as_index=False)",
+    "Line 23": "orders=('order_number', 'size')",
+    "Line 24": "median_order_value=('sale_price', 'median')",
+    "Line 30-34": "order_summary.pivot(index='product_category', columns='order_type', values='median_order_value')",
+    "Line 36-40": "chart_data.plot.bar(rot=0, figsize=(8, 4))"
+  },
+  "boundary_cases": [
+    {
+      "name": "smallest_valid_input",
+      "precondition_line": "analyze_sales.py:19-24,30-34",
+      "literal_input": {
+        "order_number": [
+          1001
+        ],
+        "order_date": [
+          "2019-02-09"
+        ],
+        "order_type": [
+          "Retail"
+        ],
+        "product_category": [
+          "Olive Oil"
+        ],
+        "quantity": [
+          1
+        ],
+        "unit_price": [
+          45.0
+        ],
+        "sale_price": [
+          45.0
+        ]
+      },
+      "expected": {
+        "orders": 1,
+        "median_order_value": 45.0,
+        "product_category": "Olive Oil",
+        "order_type": "Retail",
+        "chart_value": 45.0
+      },
+      "actual": {
+        "orders": 1,
+        "median_order_value": 45.0,
+        "product_category": "Olive Oil",
+        "order_type": "Retail",
+        "chart_value": 45.0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "ordinary_input",
+      "precondition_line": "analyze_sales.py:19-24,30-34",
+      "literal_input": {
+        "order_number": [
+          1001,
+          1002,
+          1003
+        ],
+        "order_date": [
+          "2019-02-09",
+          "2019-02-15",
+          "2019-02-16"
+        ],
+        "order_type": [
+          "Retail",
+          "Retail",
+          "Wholesale"
+        ],
+        "product_category": [
+          "Olive Oil",
+          "Olive Oil",
+          "Bath products"
+        ],
+        "quantity": [
+          2,
+          1,
+          4
+        ],
+        "unit_price": [
+          45.0,
+          19.5,
+          26.0
+        ],
+        "sale_price": [
+          90.0,
+          19.5,
+          104.0
+        ]
+      },
+      "expected": {
+        "olive_oil_retail_orders": 2,
+        "olive_oil_retail_median": 54.75,
+        "bath_wholesale_orders": 1,
+        "bath_wholesale_median": 104.0
+      },
+      "actual": {
+        "olive_oil_retail_orders": 2,
+        "olive_oil_retail_median": 54.75,
+        "bath_wholesale_orders": 1,
+        "bath_wholesale_median": 104.0
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "empty_boundary_input",
+      "precondition_line": "analyze_sales.py:19-24,30-34",
+      "literal_input": {
+        "order_number": [],
+        "order_date": [],
+        "order_type": [],
+        "product_category": [],
+        "quantity": [],
+        "unit_price": [],
+        "sale_price": []
+      },
+      "expected": {
+        "summary_empty": true,
+        "chart_empty": true
+      },
+      "actual": {
+        "summary_empty": true,
+        "chart_empty": true
+      },
+      "status": "PASS"
+    },
+    {
+      "name": "unsupported_none_input",
+      "precondition_line": "analyze_sales.py:15-24",
+      "literal_input": "None",
+      "expected": "ValueError: Sales data cannot be None",
+      "actual": "ValueError: Sales data cannot be None",
+      "status": "PASS"
+    },
+    {
+      "name": "unsupported_missing_column",
+      "precondition_line": "analyze_sales.py:15-24",
+      "literal_input": {
+        "order_number": [
+          1
+        ]
+      },
+      "expected": "ValueError: Missing required columns in sales data: ['order_date', 'order_type', 'product_category', 'quantity', 'sale_price', 'unit_price']",
+      "actual": "ValueError: Missing required columns in sales data: ['order_date', 'order_type', 'product_category', 'quantity', 'sale_price', 'unit_price']",
+      "status": "PASS"
+    }
+  ],
+  "execution": {
+    "command": "/Users/naitik2801/study matter/snai hw/task 2/.venv/bin/python3 work/R32-T002/check.py",
+    "test_count": 8,
+    "was_successful": true,
+    "errors_count": 0,
+    "failures_count": 0,
+    "log": "test_ordinary_valid_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_ordinary_valid_input)\nOrdinary input: multi-row dataset with mixed categories and order types. ... ok\ntest_plot_sales_chart_mocked (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_plot_sales_chart_mocked)\nVerify plotting behavior with external I/O (matplotlib) mocked. ... ok\ntest_precondition_anchors_and_schema (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_precondition_anchors_and_schema)\nPrecondition established at Lines 15-24: required columns for sales analysis. ... ok\ntest_smallest_valid_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_smallest_valid_input)\nSmallest valid input: single-row sales dataset (length 1). ... ok\ntest_unsupported_data_type (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_data_type)\nUnsupported input: non-DataFrame non-dict type raises ValueError. ... ok\ntest_unsupported_missing_required_column (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_missing_required_column)\nUnsupported input: missing 'sale_price' column raises ValueError. ... ok\ntest_unsupported_none_input (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_unsupported_none_input)\nUnsupported input: None raises ValueError. ... ok\ntest_valid_boundary_empty_dataset (test_analyze_sales.TestAnalyzeSalesBoundaryContract.test_valid_boundary_empty_dataset)\nValid boundary: empty dataset (0 rows) with required columns. ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.157s\n\nOK\n"
+  }
+}
