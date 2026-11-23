@@ -1,0 +1,4 @@
+1. Smallest valid input (empty result branch): ''
+2. Ordinary input: '0.1.0'
+3. Failure input: 'alpha.beta.gamma'
+4. Subsequent valid input: '1.2.3'
