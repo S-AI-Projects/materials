@@ -1,0 +1,2 @@
+1. Smallest valid input: content=''
+2. Ordinary input: content='Hello, World', output_file='basic_qrcode.png'

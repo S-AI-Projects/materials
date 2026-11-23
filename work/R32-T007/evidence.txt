@@ -1,0 +1,20 @@
+R32-T007 Verification Summary
+==============================
+Target: python-qr-code/scripts/basic_qrcode.py
+Precondition: Line 1 import segno, Line 3 make_qr, Line 4 save
+Executed documentation example: QR Code created with content: Hello, World
+Native unit tests: 3 executed, 3 passed
+Exit status: 0
+
+Unittest Output:
+test_executable_documentation_worked_example (test_basic_qrcode.TestBasicQRCode.test_executable_documentation_worked_example)
+Verifies the documented worked example transitions through states. ... ok
+test_precondition_line3_and_line4_ordinary_input_with_save (test_basic_qrcode.TestBasicQRCode.test_precondition_line3_and_line4_ordinary_input_with_save)
+Line 3 & 4: Ordinary input fixture: content='Hello, World', saved to file. ... ok
+test_precondition_line3_smallest_valid_input (test_basic_qrcode.TestBasicQRCode.test_precondition_line3_smallest_valid_input)
+Line 3: Smallest valid input fixture: empty string content=''. ... ok
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.002s
+
+OK
