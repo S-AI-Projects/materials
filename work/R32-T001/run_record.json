@@ -1,0 +1,8 @@
+{
+  "command": "/opt/homebrew/opt/python@3.15/bin/python3.15 work/R32-T001/check.py",
+  "test_count": 7,
+  "was_successful": true,
+  "errors_count": 0,
+  "failures_count": 0,
+  "log": "test_all_export_fixture (test_vehicles.TestCarRegression.test_all_export_fixture)\nPrecondition established at vehicles.py:1: __all__ = ['Car', 'Truck']. ... ok\ntest_car_drive_behavior (test_vehicles.TestCarRegression.test_car_drive_behavior)\nPreconditions: vehicles.py:4 (class Car) and vehicles.py:8-9 (def drive). ... ok\ntest_car_initialization_ordinary_input_rejected (test_vehicles.TestCarRegression.test_car_initialization_ordinary_input_rejected)\nOrdinary input domain boundary: Passing arguments to Car(...) raises TypeError. ... ok\ntest_car_initialization_smallest_valid_input (test_vehicles.TestCarRegression.test_car_initialization_smallest_valid_input)\nSmallest valid input: Car() with no positional or keyword arguments. ... ok\ntest_car_start_behavior (test_vehicles.TestCarRegression.test_car_start_behavior)\nPreconditions: vehicles.py:4 (class Car) and vehicles.py:5-6 (def start). ... ok\ntest_car_stop_behavior (test_vehicles.TestCarRegression.test_car_stop_behavior)\nPreconditions: vehicles.py:4 (class Car) and vehicles.py:11-12 (def stop). ... ok\ntest_repeated_method_calls_boundary (test_vehicles.TestCarRegression.test_repeated_method_calls_boundary)\nRepeated-value / idempotence domain boundary. ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.000s\n\nOK\n"
+}
