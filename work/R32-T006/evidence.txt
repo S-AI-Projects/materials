@@ -1,0 +1,22 @@
+R32-T006 Verification Summary
+==============================
+Target: python-namespace/legb_1.py (outer)
+Precondition: Line 1 global x, Line 4 outer, Line 6 print(x)
+Refactoring: Extracted format_scope_value responsibility and added clean default-fallback parameter
+Native unit tests: 4 executed, 4 passed
+Exit status: 0
+
+Unittest Output:
+test_extracted_formatting_responsibility (test_legb_1.TestLegbOuter.test_extracted_formatting_responsibility)
+Verify format_scope_value returns consistent string representation. ... ok
+test_precondition_line1_default_call_preserves_contract (test_legb_1.TestLegbOuter.test_precondition_line1_default_call_preserves_contract)
+Line 1: Default call outer() with no arguments prints global variable x. ... ok
+test_precondition_line4_ordinary_input (test_legb_1.TestLegbOuter.test_precondition_line4_ordinary_input)
+Line 4: Ordinary input fixture: custom string val='ordinary'. ... ok
+test_precondition_line4_smallest_valid_input (test_legb_1.TestLegbOuter.test_precondition_line4_smallest_valid_input)
+Line 4: Smallest valid input fixture: empty string val=''. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.000s
+
+OK
