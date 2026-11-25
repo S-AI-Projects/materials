@@ -1,3 +1,6 @@
+# Deterministic verification seam:
+# SpeechSample is a pure NamedTuple data container with deterministic geometric
+# transformations (num_samples, num_seconds, pad_trim).
 try:
     from copy import replace
 except ImportError:
