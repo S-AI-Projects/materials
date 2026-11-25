@@ -1,0 +1,10 @@
+{
+  "task": "R32-T018",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest /Users/prince/.gemini/antigravity/scratch/materials/python-unittest/test_unittest_coverage.py -v",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_assert_equal_mismatch_raises_assertion_error (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_assert_equal_mismatch_raises_assertion_error) ... ok\ntest_assert_equal_recovers_after_failure (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_assert_equal_recovers_after_failure) ... ok\ntest_assert_false_failure_and_recovery (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_assert_false_failure_and_recovery) ... ok\ntest_assert_raises_missing_exception_raises_assertion_error (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_assert_raises_missing_exception_raises_assertion_error) ... ok\ntest_assert_true_failure_and_recovery (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_assert_true_failure_and_recovery) ... ok\ntest_empty_suite_absent_result_path (python-unittest.test_unittest_coverage.TestUnittestFailurePaths.test_empty_suite_absent_result_path) ... /Library/Frameworks/Python.framework/Versions/3.15/lib/python3.15/unittest/case.py:637: ResourceWarning: unclosed file <_io.TextIOWrapper name='/dev/null' mode='w' encoding='utf-8'>\n  result = method()\nResourceWarning: Enable tracemalloc to get the object allocation traceback\nok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.002s\n\nOK\n",
+  "python_version": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "test_count": 6,
+  "status": "PASSED"
+}
