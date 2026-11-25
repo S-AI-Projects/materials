@@ -1,6 +1,10 @@
+PASSENGER_COLUMNS = ("id", "first_name", "last_name", "class")
+
+
 def get_column_names(table):
+    """Return the column names for a given table name."""
     if table == "passenger":
-        return ("id", "first_name", "last_name", "class")
+        return PASSENGER_COLUMNS
     raise ValueError(f"unknown table {table}")
 
 

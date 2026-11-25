@@ -1,0 +1,10 @@
+{
+  "task": "R32-T016",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest /Users/prince/.gemini/antigravity/scratch/materials/python-namedtuple/test_database.py -v",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_companion_get_passenger_by_id (python-namedtuple.test_database.TestDatabaseContract.test_companion_get_passenger_by_id) ... ok\ntest_empty_string_raises_value_error (python-namedtuple.test_database.TestDatabaseContract.test_empty_string_raises_value_error) ... ok\ntest_idempotence_and_repeatability (python-namedtuple.test_database.TestDatabaseContract.test_idempotence_and_repeatability) ... ok\ntest_passenger_columns_constant_equality (python-namedtuple.test_database.TestDatabaseContract.test_passenger_columns_constant_equality) ... ok\ntest_returns_tuple_type (python-namedtuple.test_database.TestDatabaseContract.test_returns_tuple_type) ... ok\ntest_smallest_valid_input_passenger (python-namedtuple.test_database.TestDatabaseContract.test_smallest_valid_input_passenger) ... ok\ntest_tuple_length_four (python-namedtuple.test_database.TestDatabaseContract.test_tuple_length_four) ... ok\ntest_unknown_table_raises_value_error (python-namedtuple.test_database.TestDatabaseContract.test_unknown_table_raises_value_error) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n",
+  "python_version": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "test_count": 8,
+  "status": "PASSED"
+}
