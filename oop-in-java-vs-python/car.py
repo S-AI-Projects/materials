@@ -5,7 +5,15 @@ Used to demonstrate object oriented techniques in Java vs Python
 
 
 class Vehicle:
-    """The Vehicle class is the parent for all vehicles."""
+    """The Vehicle class is the parent for all vehicles.
+
+    Invariant:
+      For all valid (color, model) arguments:
+        v = Vehicle(color, model)
+        assert v.color == color
+        assert v.model == model
+      Constructor preserves exact input references without mutation.
+    """
 
     def __init__(self, color, model):
         """Define the color and model of our vehicle"""
