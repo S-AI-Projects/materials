@@ -1,3 +1,10 @@
+"""MarkItDown OCR contract.
+
+Precondition:
+  - Line 1: `from markitdown import MarkItDown`
+  - Line 4-9: `MarkItDown(llm_client, llm_model, llm_prompt)` accepts configuration
+  - Line 10: `md.convert(path)` returns an object exposing a `.markdown` string attribute
+"""
 from markitdown import MarkItDown
 from openai import OpenAI
 
