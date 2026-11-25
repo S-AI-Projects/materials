@@ -1,0 +1,10 @@
+{
+  "task": "R32-T017",
+  "command": "/Library/Frameworks/Python.framework/Versions/3.15/bin/python3 -m unittest /Users/prince/.gemini/antigravity/scratch/materials/advent-of-code/test_aoc_grid.py -v",
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "test_corner_wall_cell_symbol (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_corner_wall_cell_symbol) ... ok\ntest_decisive_goal_cell_symbol (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_decisive_goal_cell_symbol) ... ok\ntest_grid_shape_five_by_five (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_grid_shape_five_by_five) ... ok\ntest_open_interior_cell_symbol (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_open_interior_cell_symbol) ... ok\ntest_ordinary_valid_input_one_maps_to_star (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_ordinary_valid_input_one_maps_to_star) ... ok\ntest_ordinary_valid_input_two_maps_to_goal_o (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_ordinary_valid_input_two_maps_to_goal_o) ... ok\ntest_smallest_valid_input_zero_maps_to_space (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_smallest_valid_input_zero_maps_to_space) ... ok\ntest_unique_goal_cell_count (advent-of-code.test_aoc_grid.TestAocGridDocExample.test_unique_goal_cell_count) ... ok\n\n----------------------------------------------------------------------\nRan 8 tests in 0.000s\n\nOK\n",
+  "python_version": "3.15.2 (v3.15.2:5e58eaad7c5, Oct 25 2026, 14:19:34) [Clang 21.0.0 (clang-2100.1.1.101)]",
+  "test_count": 8,
+  "status": "PASSED"
+}

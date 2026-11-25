@@ -1,3 +1,16 @@
+"""Advent of Code Grid Visualization.
+
+Worked example of grid coordinate to symbol rendering:
+  Symbol mapping (index lookup into " *o"):
+    0 -> ' ' (empty passage)
+    1 -> '*' (obstacle / wall)
+    2 -> 'o' (goal / target)
+
+  Traced decisive state transitions:
+    grid[0, 0] = 1 -> rendered symbol '*'
+    grid[1, 1] = 0 -> rendered symbol ' '
+    grid[3, 3] = 2 -> rendered symbol 'o' (unique goal at row 3, col 3)
+"""
 import numpy as np
 from colorama import Cursor
 
