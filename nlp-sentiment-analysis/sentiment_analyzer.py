@@ -1,3 +1,5 @@
+# Protected condition:
+# In evaluate_model, score >= 0.5 is an inclusive boundary condition for positive classification.
 import os
 import random
 
