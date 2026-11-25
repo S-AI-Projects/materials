@@ -1,3 +1,11 @@
+"""Monthly sales chart generator.
+
+Supported boundary contract:
+  - Interior valid inputs: calendar.JANUARY (1) through calendar.OCTOBER (10)
+  - Supported absent boundary: calendar.NOVEMBER (11) and calendar.DECEMBER (12)
+    are absent from the sales mapping and intentionally produce no visual output
+  - Domain range: min sale = 5 (Jan), max sale = 23 (Oct)
+"""
 import calendar
 
 sales = {
